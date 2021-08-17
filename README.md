@@ -1,2 +1,2 @@
 # BudgetExcess
-Party in the front (msexcel) and business in the back (msaccess): used for prototyping the Budget Execution application
+Party in the front (excel) with business in the back (access) for vba prototyping the Budget Execution application
