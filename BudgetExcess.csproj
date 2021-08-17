@@ -1,0 +1,898 @@
+﻿<Project ToolsVersion="16.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ProjectTypeGuids>{BAA0C2D2-18E2-41B9-852F-F413020CAA33};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RootNamespace>BudgetExcess</RootNamespace>
+    <AssemblyName>BudgetExcess</AssemblyName>
+    <VSTO_HostDocumentName>BudgetExcess.xlsx</VSTO_HostDocumentName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <DefineConstants>VSTO40</DefineConstants>
+    <OfficeApplication>Excel</OfficeApplication>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>HomeSite</BootstrapperComponentsLocation>
+    <ProjectGuid>{7F517F2D-BC99-4970-A0B9-6DEE69B066A6}</ProjectGuid>
+    <SolutionID>2f84a9c1-836f-48e0-9262-06a1d648577f</SolutionID>
+  </PropertyGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <PropertyGroup>
+    <VSTO_EmbedTypeLibraryInAssembly>false</VSTO_EmbedTypeLibraryInAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!--
+    This section specifies references for the project.
+  -->
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Access, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Tools.Common.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <Private>False</Private>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <Private>False</Private>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <Private>False</Private>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data.cs">
+      <DependentUpon>BudgetExcess.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="Data.Designer.cs">
+      <DependentUpon>Data.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="ThisWorkbook.cs">
+      <DependentUpon>BudgetExcess.xlsx</DependentUpon>
+    </Compile>
+    <Compile Include="ThisWorkbook.Designer.cs">
+      <DependentUpon>ThisWorkbook.Designer.xml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include=".editorconfig" />
+    <None Include="BudgetExcess.xlsx" />
+    <None Include="BudgetExcess_TemporaryKey.pfx" />
+    <None Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\logs\xvba_debug.log" />
+    <None Include="db\MSAccess\DataModels\INSERT\logs\xvba_debug.log" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="db\SQLite\DataModels\CREATE\TABLE\logs\xvba_debug.log" />
+    <None Include="db\SQLite\ReferenceModels\CREATE\TABLE\logs\xvba_debug.log" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThisWorkbook.Designer.xml">
+      <DependentUpon>ThisWorkbook.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data.Designer.xml">
+      <DependentUpon>Data.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VSTOEE100">
+      <Guid>{AAB9C2AA-6036-4AE1-A41C-A40AB7F39520}</Guid>
+      <VersionMajor>10</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\AgencyTransfers.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Allocations.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\BackUp.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\BudgetParameters.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Changes.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\CongressionalTransfers.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\ControlNumbers.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\CPIC.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Deobligations.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Distribution.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\DivisionAuthority.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\DivisionExecution.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\DivisionRescissionAuthority.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\DivisionTravel.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\EmployeeData.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\EmployeeLeave.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\EmployeePayroll.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Employees.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\FiscalYears.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\FullTimeEquivalents.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\HumanResourceOrganizations.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Messages.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\OperatingPlans.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\PayPeriods.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Payroll.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\PayrollHours.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\PayrollObligations.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\ProgrammaticReserve.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Projects.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Purchases.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\QueryDefinitions.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\RecoveryFundTransfers.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\ReferenceTables.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\RegionalAuthority.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\RegionalRescissionAuthority.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\RegionalTransfers.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\RegionTravel.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Rescission.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Sites.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\SiteTravel.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\StatusOfFunds.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Supplemental.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Transfers.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Travel.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\TravelObligations.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\WorkCodes.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\ProgrammaticUtilization.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectBudgetAuthorityData.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectBudgetLevelReconciliation.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectCumulativeTimeData.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectDivisionAuthority.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectDivisionAuthorityByAppropriation.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectDivisionAuthorityByFundObjectClass.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectDivisionExecutionByDivision.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectDivisionExecutionByProgram.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectDivisionExecutionData.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectDivisionObligationData.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectDivisionPayrollHours.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectDivisionPayrollObligations.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectDivisionTravelObligations.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectExpiringFundsExecution.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectExpiringOpenCommitments.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectObigationsByDivision.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectPayrollObligations.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectProgrammaticObligations.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectTravelObligationsByDivision.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectAllocationBudgetLevelReconcilliation.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectAllocationOperatingPlanComparison.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectBudgetToSystemReconcilliation.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectCarryoverEstimates.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectCompareExternalData.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectCongressionalTransfers.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectDivisionExecutionByAppropriation.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectDivisionExecutionByAppropriationAndObjectClass.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectDivisionExecutionByObjectClass.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectDivisionExecutionByProgramArea.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectDivisionExecutionByProgramProject.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectDivisionObligationsByDocumentControlNumber.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectDivisionRescissionExecution.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectDocumentControlNumbers.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectDualReconcilliationData.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectEpmAuthority.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectExternalAllocationComparison.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectLowerReconcilliationData.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectLustAuthority.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectOilSpillAuthority.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectOperatingPlanYearOverYearAnalysisByObjectClass.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectProgrammaticBudgetLevelReconcilliation.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectRegionalReserveData.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectRegionalReserveYearOverYearAnalysis.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectSiteProjectCodesByDivision.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectStatusOfFundsByAppropriation.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectStatusOfFundsByAppropriationObjectClass.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectStatusOfFundsByAppropriationProgramProject.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectStatusOfFundsByObjectClass.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectStatusOfFundsByProgramAccountObjectClass.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectStatusOfFundsByProgramArea.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectStatusOfFundsByProgramProject.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectSystemAllocationAnalysis.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectSystemAllocationDeltaAnalysis.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectSystemReconcilliationData.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectTravelBudgetLevelReconcilliation.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectUnionBudgetLevels.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectUpperLowerReconcilliation.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectUpperReconcilliationData.sql" />
+    <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\SelectYearOverYearAnalysis.sql" />
+    <Content Include="db\MSAccess\DataModels\DELETE\DeleteProgrammaticReservePriorYearUtilization.sql" />
+    <Content Include="db\MSAccess\DataModels\DELETE\DeleteSiteProjectCodes.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertAgencyTransferUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertAllocationOperatingPlanUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertApplicationTableUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertBackUpAllocationSystemUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertBackUpAllocationUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertBudgetParameterUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertCarryoverEstimateUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertCarryoverSurveyUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertCongressionalTransferUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertDistributionUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertDivisionAuthorityUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertDivisionExecutionUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertDivisionPersonnelUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertDivisionRescissionAuthorityUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertDivisionRescissionExecutionUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertDivisionTrainingUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertDivisionTravelUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertDocumentControlNumberUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertEmployeeDataUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertEmployeeLeaveUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertEmployeeUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertExecutionTableUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertExpiringCarryoverEstimateUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertExternalAllocationUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertFormAllocation.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertFullTimeEquivalentUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertHumanResourceOrganizationUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertLowerReconcilliationUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertOperatingPlanUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertPayPeriodUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertPayrollAccrualUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertPayrollAllocationUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertPayrollCostCodeUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertPayrollHourUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertPayrollObligationUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertPeoplePlusUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertProgrammaticReservePriorYearUtilizationUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertPurchaseRequestUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertQueryDefinitionUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertRecoveryFundTransferUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertReferenceModelUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertReferenceTableUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertRegionalAuthorityUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertRegionalRescissionAuthorityUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertRegionalReservePriorYearUtilizationUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertRegionalTransferUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertRegionalTravelUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertReimbursableAgreementUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertReimbursableFundUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertReportingCodeUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertReprogrammingAgencyTransferUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertReprogrammingCongressionalTransferUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertReprogrammingRecoveryFundTransferUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertReprogrammingRegionalTransferUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertRescissionUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertSiteProjectCodeUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertStatusOfFundsCarryoverEstimateUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertStatusOfFundsCarryoverSurveryUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertSystemUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertTransferUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertTravelObligationUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertUpperReconcilliationUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\InsertWorkCodeUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\ParamInsertAllocationFormData.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\ParamInsertChangeUpdate.sql" />
+    <Content Include="db\MSAccess\DataModels\INSERT\ParamInsertFormAllocationUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\Param-UpdateAllocationAccountData.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\Param-UpdateAuthority.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAgencyTransferDivisionNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationBocNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationDivisionNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationExternalData.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationFundNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationNpmCodes.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationNpmNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationOperatingPlanAuthority.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationProgramAreaNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationProgramProjectNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationsLowerReconcilliation.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationsOperatingPlanUpdates.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationsProgramAreaNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationsUpperReconcilliation.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateAllocationSystemData.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateFullTimeEquivalentAllocations.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateParamAllocationAccountData.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdatePayrollAccrualProgramAreaNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdatePayrollAccrualProgramProgramAreaCodes.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdatePayrollCostCodeDivisionNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdatePayrollCostCodeHrOrgNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdatePayrollObligationDivisionNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdatePayrollObligationProgramProjectCodes.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdatePayrollObligationProgramProjectNames.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateSystemUpdatesActivityCodes.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateSystemUpdatesDivisions.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateSystemUpdatesGoals.sql" />
+    <Content Include="db\MSAccess\DataModels\UPDATE\UpdateSystemUpdatesObjectives.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\Accounts.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\Activities.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\AllowanceHolders.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\AppropriationBills.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\Appropriations.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\BudgetObjectClasses.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\CPIC.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\Divisions.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\Documents.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\FinanceObjectClasses.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\Funds.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\Goals.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\GsPayScale.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\Holidays.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\NationalPrograms.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\Objectives.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\Organizations.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\ProgramAreas.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\ProgramProjects.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\ResourcePlanningOffices.sql" />
+    <Content Include="db\MSAccess\ReferenceModels\CREATE\TABLE\ResponsibilityCenters.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.AgencyTransfers.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Allocations.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.ApplicationTables.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.BackUp.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.BenefitCharges.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.BudgetParameters.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.CarryoverEstimates.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.CarryoverSurvey.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Changes.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.CongressionalTransfers.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.ControlNumbers.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Deobligations.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Distribution.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.DivisionAuthority.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.DivisionBudgets.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.DivisionExecution.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.DivisionPersonnel.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.DivisionTraining.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.DivisionTravel.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.DocumentControlNumbers.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.EmployeeBenefits.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.EmployeeData.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.EmployeeLeave.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Employees.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.ExecutionTables.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.ExternalUpdates.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.FullTimeEquivalents.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.HumanResourceOrganizations.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Images.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.LocatorData.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.LowerReconcilliation.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.OperatingPlanUpdates.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.PayPeriods.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Payroll.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.PayrollAccruals.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.PayrollCostCodes.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.PayrollHours.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.PayrollObligations.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.PeoplePlus.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.ProgrammaticReserve.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.ProgrammaticReservePriorYearUtilization.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.PurchaseRequestNumbers.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.QueryDefinitions.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.RecoveryFundTransfers.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.RegionalAuthority.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.RegionalTransfers.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.RegionTravel.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.ReimbursableAgreements.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.ReimbursableFunds.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.ReimbursableSurvey.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.ReportingCodes.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Reprogrammings.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Rescission.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.SiteProjectCodes.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.SiteSpending.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Sources.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.StatusOfFunds.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Supplemental.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.SystemUpdates.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.Transfers.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.TravelObligations.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.UpperReconcilliation.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\CREATE\TABLE\dbo.WorkCodes.Table.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertAgencyTransferUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertApplicationTableUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertBackUpAllocationUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertBudgetParameterUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertCarryoverEstimateUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertCarryoverSurveyUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertCongressionalTransferUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertDistributionUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertDivisionAuthorityUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertDivisionExecutionUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertDivisionPersonnelUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertDivisionRescissionAuthorityUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertDivisionRescissionExecutionUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertDivisionTrainingUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertDivisionTravelUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertDocumentControlNumberUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertEmployeeDataUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertEmployeeLeaveUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertEmployeeUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertExecutionTableUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertExpiringCarryoverEstimateUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertExternalAllocationUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertFormAllocation.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertFullTimeEquivalentUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertHumanResourceOrganizationUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertLowerReconcilliationUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertOperatingPlanAllocationUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertOperatingPlanUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertPayPeriodUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertPayrollAccrualUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertPayrollAllocationUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertPayrollCostCodeUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertPayrollHourUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertPayrollObligationUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertPeoplePlusUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertProgrammaticReservePriorYearUtilizationUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertPurchaseRequestUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertQueryDefinitionUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertRecoveryFundTransferUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertReferenceModelUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertReferenceTableUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertRegionalAuthorityUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertRegionalRescissionAuthorityUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertRegionalReservePriorYearUtilizationUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertRegionalTransferUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertRegionalTravelUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertReimbursableAgreementUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertReimbursableFundUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertReportingCodeUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertReprogrammingAgencyTransferUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertReprogrammingCongressionalTransferUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertReprogrammingRecoveryFundTransferUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertReprogrammingRegionalTransferUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertRescissionUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertSiteProjectCodeUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertStatusOfFundsCarryoverEstimateUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertStatusOfFundsCarryoverSurveryUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertSystemUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertTransferUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertTravelObligationUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertUpperReconcilliationUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\InsertWorkCodeUpdates.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\Param-InsertAllocationFormData.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\ParamInsertChangeUpdate.sql" />
+    <Content Include="db\MSSQL\DataModels\INSERT\ParamInsertFormAllocationUpdates.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Accounts.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Activity.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.AllowanceHolders.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Appropriations.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.BudgetObjectClasses.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.CPIC.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Divisions.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Documents.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.FinanceObjectClasses.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.FiscalYears.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Funds.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Goals.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.GsPayScale.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Holidays.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Messages.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.NationalPrograms.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Objectives.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.OperatingPlan.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Organizations.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.ProgramAreas.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.ProgramDescriptions.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.ProgramProjects.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.Projects.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.ReferenceTables.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.ResourcePlanningOffices.Table.sql" />
+    <Content Include="db\MSSQL\ReferenceModels\CREATE\TABLE\dbo.ResponsibilityCenters.Table.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\AgencyTransfers.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\Allocations.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\ApplicationTables.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\AvailableBalances.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\BackUpAllocations.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\BudgetParameters.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\CarryoverEstimates.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\Changes.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\CongressionalTransfers.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\ControlNumbers.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\Deobligations.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\Distribution.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\DivisionAuthority.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\DivisionBudgetData.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\DivisionExecution.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\DivisionPersonnel.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\DivisionRescissionAuthority.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\DivisionTraining.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\DivisionTravel.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\DocumentControlNumbers.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\EmployeeLeave.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\ExecutionTables.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\ExternalUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\LocatorData.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\LowerReconciliation.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\PayrollAccruals.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\PayrollCostCodes.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\PeoplePlus.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\ProgrammaticReserve.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\ProgrammaticReservePriorYearUtilization.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\PurchaseRequestNumbers.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\Purchases.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\QueryDefinitions.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\RecoveryFundTransfers.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\ReferenceTables.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\RegionalAuthority.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\RegionalRescissionAuthority.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\RegionalTransfers.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\RegionalTravel.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\ReimbursableAgreements.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\ReimbursableFunds.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\ReimbursableSurvey.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\ReportingCodes.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\Reprogrammings.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\Rescission.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\SiteProjectCodes.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\StatusOfFunds.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\Supplemental.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\Transfers.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\TABLE\TravelObligations.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\VIEW\BudgetAllocationOperatingPlanAnalysis.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\VIEW\BudgetLevelReconciliation.sql" />
+    <Content Include="db\SQLite\DataModels\CREATE\VIEW\BudgetToSystemBalance.sql" />
+    <Content Include="db\SQLite\DataModels\Data.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertAgencyTransferUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertApplicationTableUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertBackUpAllocationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertBenefitChargeUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertBudgetParameterUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertCarryoverEstimateUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertCarryoverSurveyUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertCongressionalTransferUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertDistributionUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertDivisionAuthorityUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertDivisionExecutionUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertDivisionPersonnelUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertDivisionRescissionAuthorityUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertDivisionRescissionExecutionUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertDivisionTrainingUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertDivisionTravelUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertDocumentControlNumberUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertEmployeeDataUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertEmployeeLeaveUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertEmployeeUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertExecutionTableUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertExpiringCarryoverEstimateUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertExternalAllocationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertFormAllocation.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertFullTimeEquivalentUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertHumanResourceOrganizationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertLowerReconcilliationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertOperatingPlanAllocationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertOperatingPlanUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertPayPeriodUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertPayrollAccrualUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertPayrollAllocationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertPayrollCostCodeUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertPayrollHourUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertPayrollObligationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertPeoplePlusUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertProgrammaticReservePriorYearUtilizationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertPurchaseRequestUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertQueryDefinitionUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertRecoveryFundTransferUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertReferenceModelUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertReferenceTableUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertRegionalAuthorityUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertRegionalRescissionAuthorityUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertRegionalReservePriorYearUtilizationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertRegionalTransferUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertRegionalTravelUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertReimbursableAgreementUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertReimbursableFundUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertReportingCodeUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertReprogrammingAgencyTransferUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertReprogrammingCongressionalTransferUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertReprogrammingRecoveryFundTransferUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertReprogrammingRegionalTransferUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertRescissionUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertSiteProjectCodeUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertStatusOfFundsCarryoverEstimateUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertStatusOfFundsCarryoverSurveryUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertSystemUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertTransferUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertTravelObligationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertUpperReconcilliationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\InsertWorkCodeUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\Param-InsertAllocationFormData.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\ParamInsertChangeUpdate.sql" />
+    <Content Include="db\SQLite\DataModels\INSERT\ParamInsertFormAllocationUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\Param-SelectExpiringFundsExecutionData.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectBudgetAuthorityData.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectBudgetLevelReconciliation.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectCumulativeTimeData.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectDivisionAuthority.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectDivisionAuthorityByAppropriation.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectDivisionAuthorityByFundObjectClass.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectDivisionExecutionByDivision.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectDivisionExecutionByProgram.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectDivisionExecutionData.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectDivisionObligationData.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectDivisionPayrollHours.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectDivisionPayrollObligations.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectDivisionTravelObligations.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectExpiringFundsExecution.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectExpiringOpenCommitments.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectObigationsByDivision.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectPayrollObligations.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectProgrammaticObligations.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\ParamSelectTravelObligationsByDivision.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectAllocationBudgetLevelReconcilliation.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectAllocationOperatingPlanComparison.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectBudgetReconcilliation.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectBudgetToSystemReconcilliation.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectCarryoverEstimates.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectCompareExternalData.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectCongressionalTransfers.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectDivisionExecutionByAppropriation.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectDivisionExecutionByAppropriationAndObjectClass.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectDivisionExecutionByObjectClass.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectDivisionExecutionByProgramArea.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectDivisionExecutionByProgramProject.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectDivisionObligationsByDocumentControlNumber.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectDivisionRescissionExecution.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectExternalAllocationComparison.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectProgrammaticBudgetLevelReconcilliation.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectRegionalReserveData.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectRegionalReserveYearOverYearAnalysis.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectSiteProjectCodesByDivision.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectStatusOfFundsByAppropriation.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectStatusOfFundsByAppropriationObjectClass.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectStatusOfFundsByAppropriationProgramProject.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectStatusOfFundsByObjectClass.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectStatusOfFundsByProgramAccountObjectClass.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectStatusOfFundsByProgramArea.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectStatusOfFundsByProgramProject.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectSystemAllocationAnalysis.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectSystemAllocationDelta.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectSystemAllocationDeltaAnalysis.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectTravelBudgetLevelReconcilliation.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectUnionBudgetLevels.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectUpperLowerReconcilliation.sql" />
+    <Content Include="db\SQLite\DataModels\SELECT\SelectYearOverYearAnalysis.sql" />
+    <Content Include="db\SQLite\DataModels\UPDATE\CompareExternalUpdates.sql" />
+    <Content Include="db\SQLite\DataModels\UPDATE\SystemAllocationOperatingPlanAnalysis.sql" />
+    <Content Include="db\SQLite\DataModels\UPDATE\UpdateAllocationExternalData.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\Accounts.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\Activities.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\AllowanceHolders.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\AppropriationBills.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\Appropriations.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\BudgetObjectClasses.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\CPIC.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\Divisions.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\Documents.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\FinanceObjectClasses.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\Funds.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\Goals.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\GsPayScale.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\Holidays.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\NationalPrograms.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\Objectives.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\Organizations.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\ProgramAreas.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\ProgramProjects.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\ResourcePlanningOffices.sql" />
+    <Content Include="db\SQLite\ReferenceModels\CREATE\TABLE\ResponsibilityCenters.sql" />
+    <Content Include="db\SQLite\ReferenceModels\References.sql" />
+    <Content Include="src\bas\BudgetEnumerations.bas" />
+    <Content Include="src\bas\HtmlHelp.bas" />
+    <Content Include="src\bas\ModernBox.bas" />
+    <Content Include="src\bas\ModernDemo.bas" />
+    <Content Include="src\bas\ModernStyle.bas" />
+    <Content Include="src\bas\ModernThemeColours.bas" />
+    <Content Include="src\bas\ParameterDialog.bas" />
+    <Content Include="src\cls\AccessData.cls" />
+    <Content Include="src\cls\Account.cls" />
+    <Content Include="src\cls\AccountArgs.cls" />
+    <Content Include="src\cls\Activity.cls" />
+    <Content Include="src\cls\AllowanceHolder.cls" />
+    <Content Include="src\cls\Appropriation.cls" />
+    <Content Include="src\cls\Budget.cls" />
+    <Content Include="src\cls\BudgetArgs.cls" />
+    <Content Include="src\cls\BudgetFile.cls" />
+    <Content Include="src\cls\BudgetFiscalYear.cls" />
+    <Content Include="src\cls\BudgetFolder.cls" />
+    <Content Include="src\cls\BudgetObjectClass.cls" />
+    <Content Include="src\cls\BudgetPath.cls" />
+    <Content Include="src\cls\Change.cls" />
+    <Content Include="src\cls\Chart.cls" />
+    <Content Include="src\cls\ControlNumber.cls" />
+    <Content Include="src\cls\DataAccess.cls" />
+    <Content Include="src\cls\Division.cls" />
+    <Content Include="src\cls\Employee.cls" />
+    <Content Include="src\cls\EmployeeArgs.cls" />
+    <Content Include="src\cls\ExcelBudget.cls" />
+    <Content Include="src\cls\ExcelReport.cls" />
+    <Content Include="src\cls\ExpenseArgs.cls" />
+    <Content Include="src\cls\FinanceObjectClass.cls" />
+    <Content Include="src\cls\FormAction.cls" />
+    <Content Include="src\cls\Form_ModernBox.cls" />
+    <Content Include="src\cls\Form_ModputBox.cls" />
+    <Content Include="src\cls\FullTimeEquivalent.cls" />
+    <Content Include="src\cls\Fund.cls" />
+    <Content Include="src\cls\Goal.cls" />
+    <Content Include="src\cls\HumanResourceOrganization.cls" />
+    <Content Include="src\cls\MessageFactory.bas" />
+    <Content Include="src\cls\NationalProgram.cls" />
+    <Content Include="src\cls\Objective.cls" />
+    <Content Include="src\cls\Organization.cls" />
+    <Content Include="src\cls\ParamterDialog.cls" />
+    <Content Include="src\cls\PayrollArgs.cls" />
+    <Content Include="src\cls\ProgramArea.cls" />
+    <Content Include="src\cls\Project.cls" />
+    <Content Include="src\cls\ResponsiblePlanningOffice.cls" />
+    <Content Include="src\cls\ResponsiblityCenter.cls" />
+    <Content Include="src\cls\Strings.bas" />
+    <Content Include="src\cls\TransferArgs.cls" />
+    <Content Include="src\cls\WorkCode.cls" />
+    <Content Include="src\frm\AccountEditor.cls" />
+    <Content Include="src\frm\AgencyTransfer.cls" />
+    <Content Include="src\frm\AllocationForm.cls" />
+    <Content Include="src\frm\BudgetCalendar.cls" />
+    <Content Include="src\frm\BudgetChart.cls" />
+    <Content Include="src\frm\BudgetDialog.cls" />
+    <Content Include="src\frm\ChartConfig.cls" />
+    <Content Include="src\frm\CongressionalTransfer.cls" />
+    <Content Include="src\frm\ControlNumbers.cls" />
+    <Content Include="src\frm\DivisionAllocations.cls" />
+    <Content Include="src\frm\DivisionDialog.cls" />
+    <Content Include="src\frm\DivisionSelector.cls" />
+    <Content Include="src\frm\DivisionUtilization.cls" />
+    <Content Include="src\frm\DocumentObligations.cls" />
+    <Content Include="src\frm\ErrorDialog.cls" />
+    <Content Include="src\frm\FinanceObligation.cls" />
+    <Content Include="src\frm\FullTimeAllocations.cls" />
+    <Content Include="src\frm\FundDialog.cls" />
+    <Content Include="src\frm\LeaveBenefits.cls" />
+    <Content Include="src\frm\OperatingPlans.cls" />
+    <Content Include="src\frm\PayPeriodDialog.cls" />
+    <Content Include="src\frm\PayrollAccruals.cls" />
+    <Content Include="src\frm\PayrollAllocations.cls" />
+    <Content Include="src\frm\PayrollDialog.cls" />
+    <Content Include="src\frm\PayrollObligations.bas" />
+    <Content Include="src\frm\PayrollStatusDialog.cls" />
+    <Content Include="src\frm\PayrollUtilization.cls" />
+    <Content Include="src\frm\PdfBrowser.cls" />
+    <Content Include="src\frm\PeoplePlusHours.cls" />
+    <Content Include="src\frm\ProgrammaticObligations.cls" />
+    <Content Include="src\frm\ProgrammaticReconcilliation.cls" />
+    <Content Include="src\frm\RecoveryFundTransfer.cls" />
+    <Content Include="src\frm\RegionalDocuments.cls" />
+    <Content Include="src\frm\RegionalTransfer.cls" />
+    <Content Include="src\frm\RegionDialog.cls" />
+    <Content Include="src\frm\ReportDialog.cls" />
+    <Content Include="src\frm\Reprogramming.cls" />
+    <Content Include="src\frm\SelectionDialog.cls" />
+    <Content Include="src\frm\StatusOfFunds.cls" />
+    <Content Include="src\frm\SystemAllocation.cls" />
+    <Content Include="src\frm\TimeDialog.cls" />
+    <Content Include="src\frm\TravelAllocation.cls" />
+    <Content Include="src\frm\TravelObligation.cls" />
+    <Content Include="src\frm\TravelReconcilliation.cls" />
+    <Content Include="src\frm\TravelUtilization.cls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\.dist\" />
+    <Folder Include="db\MSAccess\DataModels\INSERT\.dist\" />
+    <Folder Include="db\MSAccess\ReferenceModels\CREATE\VIEW\" />
+    <Folder Include="db\MSAccess\ReferenceModels\DELETE\" />
+    <Folder Include="db\MSAccess\ReferenceModels\INSERT\" />
+    <Folder Include="db\MSAccess\ReferenceModels\UPDATE\" />
+    <Folder Include="db\MSSQL\DataModels\CREATE\VIEW\" />
+    <Folder Include="db\MSSQL\DataModels\DELETE\" />
+    <Folder Include="db\MSSQL\DataModels\UPDATE\" />
+    <Folder Include="db\MSSQL\ReferenceModels\CREATE\VIEW\" />
+    <Folder Include="db\MSSQL\ReferenceModels\DELETE\" />
+    <Folder Include="db\MSSQL\ReferenceModels\INSERT\" />
+    <Folder Include="db\MSSQL\ReferenceModels\UPDATE\" />
+    <Folder Include="db\SQLite\DataModels\CREATE\TABLE\.dist\" />
+    <Folder Include="db\SQLite\DataModels\DELETE\" />
+    <Folder Include="db\SQLite\ReferenceModels\CREATE\TABLE\.dist\" />
+    <Folder Include="db\SQLite\ReferenceModels\CREATE\VIEW\" />
+    <Folder Include="db\SQLite\ReferenceModels\DELETE\" />
+    <Folder Include="db\SQLite\ReferenceModels\INSERT\" />
+    <Folder Include="db\SQLite\ReferenceModels\UPDATE\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>BudgetExcess_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>F04C1E3589540F1694E3160F04986EB93518B846</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\OfficeTools\Microsoft.VisualStudio.Tools.Office.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
+        <ProjectProperties HostName="BudgetExcess.xlsx" HostPackage="{3F2B7691-D1D1-402F-9370-2704A737CF60}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="XLS" Language="CS" TemplatesPath="VSTOTemplates" DebugInfoExeName="C:\Program Files (x86)\Microsoft Office\root\Office16\excel.exe" DebugInfoCommandLine="/x &quot;[$OUTPUT]BudgetExcess.xlsx&quot;" />
+        <Host Name="Excel Document" Path=".\BudgetExcess.xlsx" GeneratedCodeNamespace="BudgetExcess">
+          <HostItem Name="Sheet1" Code="Data.cs" CanonicalName="Sheet1" DisplayName="Sheet1" Blueprint="Data.Designer.xml" GeneratedCode="Data.Designer.cs" />
+          <HostItem Name="ThisWorkbook" Code="ThisWorkbook.cs" CanonicalName="ThisWorkbook" Blueprint="ThisWorkbook.Designer.xml" GeneratedCode="ThisWorkbook.Designer.cs" />
+        </Host>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!--
+    To modify your build process, add your task inside one of the targets below and uncomment it.
+    Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
