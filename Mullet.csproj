@@ -172,53 +172,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
     <Content Include="BlueNinja.ico" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\AgencyTransfers.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Allocations.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\BackUp.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\BudgetParameters.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Changes.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\CongressionalTransfers.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\ControlNumbers.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\CPIC.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Deobligations.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Distribution.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\DivisionAuthority.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\DivisionExecution.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\DivisionRescissionAuthority.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\DivisionTravel.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\EmployeeData.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\EmployeeLeave.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\EmployeePayroll.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Employees.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\FiscalYears.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\FullTimeEquivalents.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\HumanResourceOrganizations.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Messages.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\OperatingPlans.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\PayPeriods.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Payroll.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\PayrollHours.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\PayrollObligations.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\ProgrammaticReserve.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Projects.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Purchases.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\QueryDefinitions.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\RecoveryFundTransfers.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\ReferenceTables.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\RegionalAuthority.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\RegionalRescissionAuthority.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\RegionalTransfers.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\RegionTravel.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Rescission.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Sites.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\SiteTravel.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\StatusOfFunds.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Supplemental.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Transfers.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\Travel.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\TravelObligations.sql" />
-    <Content Include="db\MSAccess\DataModels\CREATE\TABLE\WorkCodes.sql" />
     <Content Include="db\MSAccess\DataModels\CREATE\VIEW\ProgrammaticUtilization.sql" />
     <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectBudgetAuthorityData.sql" />
     <Content Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\ParamSelectBudgetLevelReconciliation.sql" />
@@ -848,6 +804,7 @@
     <Content Include="src\frm\TravelUtilization.cls" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="db\MSAccess\DataModels\CREATE\TABLE\" />
     <Folder Include="db\MSAccess\DataModels\CREATE\VIEW\SELECT\.dist\" />
     <Folder Include="db\MSAccess\DataModels\INSERT\.dist\" />
     <Folder Include="db\MSAccess\ReferenceModels\CREATE\VIEW\" />
