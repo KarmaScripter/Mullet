@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>BudgetExcess</RootNamespace>
-    <AssemblyName>BudgetExcel</AssemblyName>
+    <AssemblyName>Mullet</AssemblyName>
     <VSTO_HostDocumentName>BudgetExcel.xlsx</VSTO_HostDocumentName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
