@@ -209,7 +209,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var _range = grid?.Range;
+                    var  _range = grid?.Range;
                     var _excelComment = _range?.AddComment( text, "Budget" );
                     if( _excelComment != null )
                     {
@@ -239,7 +239,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var _sheet = grid.Worksheet;
+                    var  _sheet = grid.Worksheet;
                     var _row = grid.Range.Start.Row;
                     var _column = grid.Range.Start.Column;
                     _sheet.Cells[ _row, _column ].Value = "Account";
@@ -291,7 +291,7 @@ namespace BudgetExecution
         /// <param name="ex"> The ex. </param>
         static protected void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            var _error = new ErrorDialog( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

@@ -137,8 +137,8 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var _worksheet = grid.Worksheet;
-                    using var _range = grid.Range;
+                    var  _worksheet = grid.Worksheet;
+                    var  _range = grid.Range;
                     var _row = _range.Start.Row;
                     var _column = _range.Start.Column;
                     SetFontColor( grid, FontColor );
@@ -168,7 +168,7 @@ namespace BudgetExecution
                 try
                 {
                     excelRange.Style.Font.Color.SetColor( Color.Black );
-                    using var _font = Font;
+                    var  _font = Font;
                     excelRange.Style.Font.SetFromFont( Font.Name, Font.Size );
                     excelRange.Style.Fill.PatternType = ExcelFillStyle.Solid;
                     excelRange.Style.Fill.BackgroundColor.SetColor( PrimaryBackColor );
@@ -191,7 +191,7 @@ namespace BudgetExecution
                 try
                 {
                     range.Style.Font.Color.SetColor( FontColor );
-                    using var _font = Font;
+                    var  _font = Font;
                     range.Style.Font.SetFromFont( Font.Name, Font.Size );
                     range.Style.Fill.PatternType = ExcelFillStyle.Solid;
                     range.Style.Fill.BackgroundColor.SetColor( Color.White );
@@ -274,7 +274,7 @@ namespace BudgetExecution
                 try
                 {
                     SetHeaderText( grid );
-                    using var _range = grid.Range;
+                    var  _range = grid.Range;
                     _range.Style.Font.SetFromFont( TitleFont.Name, TitleFont.Size );
                     _range.Style.Border.BorderAround( ExcelBorderStyle.Thin );
                     _range.Style.Fill.PatternType = ExcelFillStyle.Solid;

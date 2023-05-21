@@ -73,8 +73,8 @@ namespace BudgetExecution
         public List<string> GetColumnNames( string tableName )
         {
             var _names = new List<string>( );
-            using var _command = new OleDbCommand( "select * from " + tableName, _connection );
-            using var _dataReader = _command.ExecuteReader( CommandBehavior.SchemaOnly );
+            var  _command = new OleDbCommand( "select * from " + tableName, _connection );
+            var  _dataReader = _command.ExecuteReader( CommandBehavior.SchemaOnly );
             var _dataTable = _dataReader.GetSchemaTable( );
             var _dataColumn = _dataTable?.Columns[ "ColumnName" ];
             if( _dataTable?.Rows != null )

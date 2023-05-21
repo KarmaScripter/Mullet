@@ -194,7 +194,7 @@ namespace BudgetExecution
 
             try
             {
-                using var _excel = new ExcelPackage( new FileInfo( path ) );
+                var  _excel = new ExcelPackage( new FileInfo( path ) );
                 var _workbook = _excel.Workbook;
                 var _worksheet = _workbook.Worksheets[ 0 ];
                 var _range = _worksheet.Cells;
@@ -352,7 +352,7 @@ namespace BudgetExecution
         /// <param name="ex"> The ex. </param>
         static private void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            var _error = new ErrorDialog( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

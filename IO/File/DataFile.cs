@@ -80,8 +80,8 @@ namespace BudgetExecution
                 if( !string.IsNullOrEmpty( search )
                    && File.Exists( search ) )
                 {
-                    using var _stream = File.Open( search, FileMode.Open );
-                    using var _reader = new StreamReader( _stream );
+                    var  _stream = File.Open( search, FileMode.Open );
+                    var  _reader = new StreamReader( _stream );
                     if( _reader != null )
                     {
                         var _text = _reader?.ReadLine( );

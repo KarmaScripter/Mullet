@@ -382,7 +382,7 @@ namespace BudgetExecution
                                       [Key] NVARCHAR(2048)  NULL,
                                       [Value] VARCHAR(2048)  NULL )";
 
-            using var _connection = new SQLiteConnection( "Data source=databaseFile.db" );
+            var  _connection = new SQLiteConnection( "Data source=databaseFile.db" );
             var _cmd = new SQLiteCommand( _connection );
             _connection.Open( );
             _cmd.CommandText = _commandText;

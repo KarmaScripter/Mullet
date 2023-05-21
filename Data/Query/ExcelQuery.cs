@@ -204,7 +204,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var _excelPackage = ReadExcelFile( filePath );
+                    var  _excelPackage = ReadExcelFile( filePath );
                     var _name = Path.GetFileNameWithoutExtension( filePath );
                     var _excelWorksheet = _excelPackage?.Workbook?.Worksheets?.Add( _name );
                     var _columns = table?.Columns?.Count;

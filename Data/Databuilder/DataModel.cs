@@ -364,7 +364,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var _reader = new DataTableReader( dataTable );
+                    var  _reader = new DataTableReader( dataTable );
                     var _schema = _reader?.GetSchemaTable( );
                     return _schema?.Rows?.Count > 0
                         ? _schema
@@ -395,8 +395,8 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var _package = new ExcelPackage( );
-                    using var _stream = File.OpenRead( filePath );
+                    var  _package = new ExcelPackage( );
+                    var  _stream = File.OpenRead( filePath );
                     _package.Load( _stream );
                     var _sheet = _package?.Workbook?.Worksheets?.First( );
                     var _table = new DataTable( _sheet?.Name );

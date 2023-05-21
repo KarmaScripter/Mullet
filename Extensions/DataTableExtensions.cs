@@ -135,7 +135,7 @@ namespace BudgetExecution
                 {
                     var _connectionString = Connection[ "Excel" ].ConnectionString;
                     var _sql = "SELECT * FROM [" + sheetName + "$]";
-                    using var _adapter = new OleDbDataAdapter( _sql, _connectionString );
+                    var  _adapter = new OleDbDataAdapter( _sql, _connectionString );
                     var _table = new DataTable( );
                     _table.TableName = sheetName;
                     _adapter?.FillSchema( _table, System.Data.SchemaType.Source );
@@ -550,7 +550,7 @@ namespace BudgetExecution
         /// <param name="ex"> The ex. </param>
         static private void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            var _error = new ErrorDialog( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

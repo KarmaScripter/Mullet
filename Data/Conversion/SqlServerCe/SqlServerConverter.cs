@@ -907,7 +907,7 @@ namespace BudgetExecution
         private DatabaseSchema ReadSqlServerSchema( string connectionString, SqlConversionHandler handler, SqlTableSelectionHandler selectionHandler )
         {
             var _tables = new List<TableSchema>( );
-            using var _connection = new SqlConnection( connectionString );
+            var  _connection = new SqlConnection( connectionString );
             {
                 _connection.Open( );
                 var _tableNames = new List<string>( );

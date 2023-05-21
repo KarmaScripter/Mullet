@@ -123,7 +123,7 @@ namespace BudgetExecution
         {
             try
             {
-                using var _dataTable = dataGridView?.GetDataTable( );
+                var  _dataTable = dataGridView?.GetDataTable( );
                 if( _dataTable?.Columns?.Count > 0
                    && index?.Length > 0 )
                 {
@@ -138,7 +138,7 @@ namespace BudgetExecution
                         }
                     }
 
-                    using var _view = new System.Data.DataView( _dataTable );
+                    var  _view = new System.Data.DataView( _dataTable );
                     var _table = _view?.ToTable( true, _names );
                     return _table.Columns.Count > 0
                         ? _table
@@ -373,7 +373,7 @@ namespace BudgetExecution
         /// <param name="ex"> The ex. </param>
         static private void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            var _error = new ErrorDialog( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

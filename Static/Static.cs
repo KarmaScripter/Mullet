@@ -94,7 +94,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var _command = connection?.CreateCommand( sql );
+                    var _command = connection?.CreateCommand( sql );
                     return _command?.ExecuteNonQuery( ) ?? 0;
                 }
                 catch( Exception _ex )
@@ -215,7 +215,7 @@ namespace BudgetExecution
         /// <param name="ex"> The ex. </param>
         static private void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            var _error = new ErrorDialog( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

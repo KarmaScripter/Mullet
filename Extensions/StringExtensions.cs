@@ -345,7 +345,7 @@ namespace BudgetExecution
             {
                 try
                 {
-                    using var _writer = new StreamWriter( text, false );
+                    var  _writer = new StreamWriter( text, false );
                     _writer.Write( path );
                 }
                 catch( Exception ex )
@@ -436,7 +436,7 @@ namespace BudgetExecution
         /// <param name="ex"> The ex. </param>
         static private void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            var _error = new ErrorDialog( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

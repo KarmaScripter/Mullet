@@ -323,19 +323,15 @@ namespace BudgetExecution
                 try
                 {
                     var _cols = Columns.ToArray( );
-                    switch( _cols.Length )
+                    if( _cols.Length >= 43
+                       || _cols.Length < 43  )
                     {
-                        case >= 43:
-                        case < 43 and >= 35:
-                            FrameTable.Location = new Point( 12, 25 );
-                            break;
-                        case < 35 and >= 28:
-                        case < 28 and >= 21:
-                        case < 21 and >= 14:
-                        case < 14 and > 7:
-                        case <= 7:
-                            FrameTable.Location = new Point( 12, 81 );
-                            break;
+                        FrameTable.Location = new Point( 12, 25 );
+                    }
+                    else if( _cols.Length < 35 
+                            || _cols.Length <= 7 )
+                    {
+                        FrameTable.Location = new Point( 12, 81 );
                     }
                 }
                 catch( Exception ex )

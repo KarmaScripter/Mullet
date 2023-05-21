@@ -162,7 +162,7 @@ namespace BudgetExecution
         /// <param name="ex"> The exception. </param>
         static private void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            var _error = new ErrorDialog( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }
@@ -183,7 +183,7 @@ namespace BudgetExecution
                         {
                             var _extension = FileExtension.TrimStart( '.' ).ToUpper( );
                             var _file = _files?.Where( f => f.Contains( _extension ) )?.First( );
-                            using var stream = File.Open( _file, FileMode.Open );
+                            var  stream = File.Open( _file, FileMode.Open );
                             var _img = Image.FromStream( stream );
                             return new Bitmap( _img, 22, 22 );
                         }

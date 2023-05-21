@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.Tools.Applications.Runtime;
 using Excel = Microsoft.Office.Interop.Excel;
 using Office = Microsoft.Office.Core;
 
-namespace BudgetExcess
+namespace BudgetExecution
 {
     public partial class Data
     {

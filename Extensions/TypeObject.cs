@@ -29,7 +29,7 @@ namespace BudgetExecution
                 {
                     var _encoding = Encoding.Default;
                     var _serializer = new DataContractJsonSerializer( typeof( T ) );
-                    using var stream = new MemoryStream( );
+                    var  stream = new MemoryStream( );
                     _serializer.WriteObject( stream, type );
                     var json = _encoding.GetString( stream.ToArray( ) );
                     return json;
@@ -58,7 +58,7 @@ namespace BudgetExecution
                 {
                     var _encoding = Encoding.Default;
                     var _serializer = new DataContractJsonSerializer( typeof( T ) );
-                    using var _stream = new MemoryStream( );
+                    var  _stream = new MemoryStream( );
                     _serializer.WriteObject( _stream, type );
                     var json = _encoding.GetString( _stream.ToArray( ) );
                     return json;
@@ -83,10 +83,10 @@ namespace BudgetExecution
                 try
                 {
                     var _serializer = new XmlSerializer( type.GetType( ) );
-                    using var _writer = new StringWriter( );
+                    var  _writer = new StringWriter( );
                     _serializer?.Serialize( _writer, type );
                     var _string = _writer?.GetStringBuilder( )?.ToString( );
-                    using var _reader = new StringReader( _string );
+                    var  _reader = new StringReader( _string );
                     return _reader?.ReadToEnd( ) ?? string.Empty;
                 }
                 catch( Exception ex )
@@ -103,7 +103,7 @@ namespace BudgetExecution
         /// <param name="ex"> The ex. </param>
         static private void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            var _error = new ErrorDialog( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }

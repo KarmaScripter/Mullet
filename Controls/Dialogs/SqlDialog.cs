@@ -308,7 +308,7 @@ namespace BudgetExecution
             {
                 if( Enum.IsDefined( typeof( Provider ), provider ) )
                 {
-                    var _path = DatabaseDirectory + @$"\{provider}\DataModels\";
+                    var _path = DatabaseDirectory + $@"\{provider}\DataModels\";
                     var _names = Directory.GetDirectories( _path );
                     var _list = new List<string>( );
                     for( var _i = 0; _i < _names.Length; _i++ )
@@ -343,7 +343,7 @@ namespace BudgetExecution
             {
                 if( Enum.IsDefined( typeof( Provider ), provider ) )
                 {
-                    var _path = DatabaseDirectory + @$"\{provider}\DataModels\";
+                    var _path = DatabaseDirectory + $@"\{provider}\DataModels\";
                     var _names = Directory.GetDirectories( _path );
                     var _list = new List<string>( );
                     for( var _i = 0; _i < _names.Length; _i++ )
@@ -476,7 +476,7 @@ namespace BudgetExecution
                     if( _selection?.Contains( " " ) == true )
                     {
                         SelectedCommand = _selection.Replace( " ", "" );
-                        var _path = DatabaseDirectory + @$"\{Provider}\DataModels\{SelectedCommand}";
+                        var _path = DatabaseDirectory + $@"\{Provider}\DataModels\{SelectedCommand}";
                         var _files = Directory.GetFiles( _path );
                         for( var _i = 0; _i < _files.Length; _i++ )
                         {
@@ -488,7 +488,7 @@ namespace BudgetExecution
                     else
                     {
                         SelectedCommand = _comboBox.SelectedItem?.ToString( );
-                        var _path = DatabaseDirectory + @$"\{Provider}\DataModels\{SelectedCommand}";
+                        var _path = DatabaseDirectory + $@"\{Provider}\DataModels\{SelectedCommand}";
                         var _names = Directory.GetFiles( _path );
                         for( var _i = 0; _i < _names.Length; _i++ )
                         {
@@ -520,7 +520,7 @@ namespace BudgetExecution
                     {
                         var _command = SelectedCommand?.Replace( " ", "" );
                         var _query = SelectedQuery?.Replace( " ", "" );
-                        var _filePath = DatabaseDirectory + @$"\{Provider}\DataModels\{_command}\{_query}.sql";
+                        var _filePath = DatabaseDirectory + $@"\{Provider}\DataModels\{_command}\{_query}.sql";
                         var _stream = File.OpenRead( _filePath );
                         var _reader = new StreamReader( _stream );
                         var _text = _reader.ReadToEnd( );
@@ -528,7 +528,7 @@ namespace BudgetExecution
                     }
                     else
                     {
-                        var _path = DatabaseDirectory + @$"\{Provider}\DataModels\{SelectedCommand}\{SelectedQuery}.sql";
+                        var _path = DatabaseDirectory + $@"\{Provider}\DataModels\{SelectedCommand}\{SelectedQuery}.sql";
                         var _stream = File.OpenRead( _path );
                         var _reader = new StreamReader( _stream );
                         var _text = _reader.ReadToEnd( );

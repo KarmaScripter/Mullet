@@ -1,4 +1,4 @@
-// <copyright file = " <File Name>.cs" company = "Terry D.Eppler">
+﻿// <copyright file = " <File Name>.cs" company = "Terry D.Eppler">
 // Copyright (c) Terry Eppler.All rights reserved.
 // </copyright>
 
@@ -202,7 +202,7 @@ namespace BudgetExecution
         /// <param name="ex"> The ex. </param>
         static private void Fail( Exception ex )
         {
-            using var _error = new ErrorDialog( ex );
+            var _error = new ErrorDialog( ex );
             _error?.SetText( );
             _error?.ShowDialog( );
         }
