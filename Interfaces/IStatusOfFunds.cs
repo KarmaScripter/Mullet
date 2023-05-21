@@ -7,73 +7,73 @@ namespace BudgetExecution
     using System.Collections.Generic;
     using System.Data;
 
-    public interface IStatusOfFunds
+    interface IStatusOfFunds
     {
         /// <summary> Gets or sets the identifier. </summary>
         /// <value> The identifier. </value>
-        public int ID { get; set; }
+        int ID { get; set; }
 
         string BudgetLevel { get; set; }
 
         /// <summary> Gets or sets the amount. </summary>
         /// <value> The amount. </value>
-        public double Amount { get; set; }
+        double Amount { get; set; }
 
         /// <summary> Gets or sets the budgeted. </summary>
         /// <value> The budgeted. </value>
-        public double Budgeted { get; set; }
+        double Budgeted { get; set; }
 
         /// <summary> Gets or sets the posted. </summary>
         /// <value> The posted. </value>
-        public double Posted { get; set; }
+        double Posted { get; set; }
 
         /// <summary> Gets or sets the open commitments. </summary>
         /// <value> The open commitments. </value>
-        public double OpenCommitments { get; set; }
+        double OpenCommitments { get; set; }
 
         /// <summary> Gets or sets the ulo. </summary>
         /// <value> The ulo. </value>
-        public double ULO { get; set; }
+        double ULO { get; set; }
 
         /// <summary> Gets or sets the expenditures. </summary>
         /// <value> The expenditures. </value>
-        public double Expenditures { get; set; }
+        double Expenditures { get; set; }
 
         /// <summary> Gets or sets the obligations. </summary>
         /// <value> The obligations. </value>
-        public double Obligations { get; set; }
+        double Obligations { get; set; }
 
         /// <summary> Gets or sets the used. </summary>
         /// <value> The used. </value>
-        public double Used { get; set; }
+        double Used { get; set; }
 
         /// <summary> Gets or sets the available. </summary>
         /// <value> The available. </value>
-        public double Available { get; set; }
+        double Available { get; set; }
 
         /// <summary> Gets or sets the NPM code. </summary>
         /// <value> The NPM code. </value>
-        public string NpmCode { get; set; }
+        string NpmCode { get; set; }
 
         /// <summary> Gets or sets the name of the NPM. </summary>
         /// <value> The name of the NPM. </value>
-        public string NpmName { get; set; }
+        string NpmName { get; set; }
 
         /// <summary> Gets or sets the treasury account code. </summary>
         /// <value> The treasury account code. </value>
-        public string TreasuryAccountCode { get; set; }
+        string TreasuryAccountCode { get; set; }
 
         /// <summary> Gets or sets the treasury agency code. </summary>
         /// <value> The treasury agency code. </value>
-        public string TreasuryAccountName { get; set; }
+        string TreasuryAccountName { get; set; }
 
         /// <summary> Gets or sets the budget account code. </summary>
         /// <value> The budget account code. </value>
-        public string BudgetAccountCode { get; set; }
+        string BudgetAccountCode { get; set; }
 
         /// <summary> Gets or sets the name of the budget account. </summary>
         /// <value> The name of the budget account. </value>
-        public string BudgetAccountName { get; set; }
+        string BudgetAccountName { get; set; }
 
         /// <summary> Gets or sets the source. </summary>
         /// <value> The source. </value>

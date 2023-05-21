@@ -5,12 +5,15 @@
 namespace BudgetExecution
 {
     using System;
-    using System.Drawing;
     using System.Threading;
     using System.Windows.Forms;
     using Syncfusion.Drawing;
     using Syncfusion.Windows.Forms;
     using Syncfusion.Windows.Forms.Edit;
+    using Color = System.Drawing.Color;
+    using Font = System.Drawing.Font;
+    using FontStyle = System.Drawing.FontStyle;
+    using SystemColors = System.Drawing.SystemColors;
 
     /// <summary> </summary>
     /// <seealso cref="Syncfusion.Windows.Forms.Edit.EditControl"/>

@@ -36,15 +36,15 @@ namespace BudgetExecution
 
         /// <summary> Gets or sets the start date. </summary>
         /// <value> The start date. </value>
-        DateOnly StartDate { get; set; }
+        DateTime StartDate { get; set; }
 
         /// <summary> Gets or sets the end date. </summary>
         /// <value> The end date. </value>
-        DateOnly EndDate { get; set; }
+        DateTime EndDate { get; set; }
 
         /// <summary> Gets or sets the cancellation date. </summary>
         /// <value> The cancellation date. </value>
-        DateOnly CancellationDate { get; set; }
+        DateTime CancellationDate { get; set; }
 
         /// <summary> Gets or sets the record. </summary>
         /// <value> The record. </value>

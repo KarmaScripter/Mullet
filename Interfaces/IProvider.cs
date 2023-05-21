@@ -9,6 +9,6 @@ namespace BudgetExecution
     {
         /// <summary> </summary>
         /// <returns> </returns>
-        public Provider Provider { get; set; }
+        Provider Provider { get; set; }
     }
 }

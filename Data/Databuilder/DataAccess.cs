@@ -206,7 +206,7 @@ namespace BudgetExecution
                            && col.DataType != typeof( int )
                            && col.DataType != typeof( string )
                            && col.DataType != typeof( DateTime )
-                           && col.DataType != typeof( DateOnly )
+                           && col.DataType != typeof( DateTime )
                            && col.DataType != typeof( DateTimeOffset )
                            && ( col.DataType == typeof( double ) || col.DataType == typeof( decimal ) || col.DataType == typeof( float ) ) )
                         {
@@ -240,7 +240,7 @@ namespace BudgetExecution
                     foreach( DataColumn col in DataTable.Columns )
                     {
                         if( col.Ordinal > 0
-                           && ( col.DataType == typeof( DateTime ) || col.DataType == typeof( DateOnly ) || col.DataType == typeof( DateTimeOffset ) || col.ColumnName.EndsWith( "Date" ) ) )
+                           && ( col.DataType == typeof( DateTime ) || col.DataType == typeof( DateTime ) || col.DataType == typeof( DateTimeOffset ) || col.ColumnName.EndsWith( "Date" ) ) )
                         {
                             _dates.Add( col.ColumnName );
                         }

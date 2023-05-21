@@ -200,7 +200,10 @@ namespace BudgetExecution
             {
                 try
                 {
-                    var _query = DataTable.Filter( where )?.Select( p => p.Field<double>( numeric ) )?.Average( );
+                    var _query = DataTable.Filter( where )
+                        ?.Select( p => p.Field<double>( numeric ) )
+                        ?.Average( );
+                    
                     return _query > 0
                         ? double.Parse( _query?.ToString( "N1" ) )
                         : 0.0d;
@@ -396,7 +399,7 @@ namespace BudgetExecution
                            && col.DataType != typeof( int )
                            && col.DataType != typeof( string )
                            && col.DataType != typeof( DateTime )
-                           && col.DataType != typeof( DateOnly )
+                           && col.DataType != typeof( DateTime )
                            && col.DataType != typeof( DateTimeOffset )
                            && ( col.DataType == typeof( double ) || col.DataType == typeof( decimal ) || col.DataType == typeof( float ) ) )
                         {

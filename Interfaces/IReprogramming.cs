@@ -57,7 +57,7 @@ namespace BudgetExecution
 
         /// <summary> Gets or sets the processed date. </summary>
         /// <value> The processed date. </value>
-        DateOnly ProcessedDate { get; set; }
+        DateTime ProcessedDate { get; set; }
 
         /// <summary> Gets or sets the quarter. </summary>
         /// <value> The quarter. </value>

@@ -11,17 +11,17 @@ namespace BudgetExecution
     public interface IDataUnit
     {
         /// <summary> </summary>
-        public int ID { get; set; }
+        int ID { get; set; }
 
         /// <summary> Gets the field. </summary>
-        public string Code { get; set; }
+        string Code { get; set; }
 
         /// <summary> The name </summary>
-        public string Name { get; set; }
+        string Name { get; set; }
 
         /// <summary> </summary>
         /// <value> </value>
-        public DataRow Record { get; set; }
+        DataRow Record { get; set; }
 
         /// <summary> Determines whether the specified element is match. </summary>
         /// <param name = "unit" > The element. </param>

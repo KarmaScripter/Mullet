@@ -351,7 +351,7 @@ namespace BudgetExecution
                             {
                                 dataGridView.Columns[ _i ].DefaultCellStyle.Format = "yyyy-MM-dd";
                             }
-                            else if( _column.DataType == typeof( DateOnly ) )
+                            else if( _column.DataType == typeof( DateTime ) )
                             {
                                 dataGridView.Columns[ _i ].DefaultCellStyle.Format = "yyyy-MM-dd";
                             }

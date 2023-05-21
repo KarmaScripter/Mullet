@@ -191,7 +191,7 @@ namespace BudgetExecution
                             }
 
                             return _sqlite.Any( )
-                                ? _sqlite.ToArray( )
+                                ? (IEnumerable<DbParameter>)_sqlite.ToArray( )
                                 : default( List<DbParameter> );
                         }
                         case Provider.SqlCe:
@@ -209,7 +209,7 @@ namespace BudgetExecution
                             }
 
                             return _sqlce.Any( )
-                                ? _sqlce.ToArray( )
+                                ? (IEnumerable<DbParameter>)_sqlce.ToArray( )
                                 : default( List<DbParameter> );
                         }
                         case Provider.OleDb:
@@ -229,7 +229,7 @@ namespace BudgetExecution
                             }
 
                             return _oledb.Any( )
-                                ? _oledb.ToArray( )
+                                ? (IEnumerable<DbParameter>)_oledb.ToArray( )
                                 : default( List<DbParameter> );
                         }
                         case Provider.SqlServer:
@@ -247,7 +247,7 @@ namespace BudgetExecution
                             }
 
                             return _sqlserver?.Any( ) == true
-                                ? _sqlserver.ToArray( )
+                                ? (IEnumerable<DbParameter>)_sqlserver.ToArray( )
                                 : default( List<DbParameter> );
                         }
                     }

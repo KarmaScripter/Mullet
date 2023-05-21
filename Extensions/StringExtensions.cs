@@ -6,6 +6,7 @@ namespace BudgetExecution
 {
     using System;
     using System.IO;
+    using System.Linq;
     using System.Net;
     using System.Net.Mail;
     using System.Text;
@@ -148,34 +149,6 @@ namespace BudgetExecution
             {
                 return text?.Length > length
                     ? text.Substring( text.Length - length )
-                    : text;
-            }
-            catch( Exception ex )
-            {
-                Fail( ex );
-                return default;
-            }
-        }
-
-        /// <summary> The Left </summary>
-        /// <param name="text">
-        /// The text
-        /// <see cref="string"/>
-        /// </param>
-        /// <param name="length">
-        /// The length
-        /// <see cref="int"/>
-        /// </param>
-        /// <returns>
-        /// The
-        /// <see cref="string"/>
-        /// </returns>
-        public static string First( this string text, int length )
-        {
-            try
-            {
-                return text?.Length > length
-                    ? text[ ..length ]
                     : text;
             }
             catch( Exception ex )

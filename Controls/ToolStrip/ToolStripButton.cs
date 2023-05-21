@@ -317,12 +317,6 @@ namespace BudgetExecution
                             _browser?.ShowDialog( );
                             break;
                         }
-                        case ToolType.WebButton:
-                        {
-                            var  _form = new WebPage( );
-                            _form?.ShowDialog( );
-                            break;
-                        }
                         default:
                         {
                             var _notification = new Notification( "NOT YET IMPLEMENTED!" );

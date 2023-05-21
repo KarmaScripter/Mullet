@@ -15,7 +15,6 @@ namespace BudgetExecution
     [ SuppressMessage( "ReSharper", "MemberCanBeProtected.Global" ) ]
     public class Grid : ExcelCellBase, IGrid
     {
-
         /// <summary> The range </summary>
         public ExcelRange Range { get; set; }
 

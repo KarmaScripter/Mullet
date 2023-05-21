@@ -167,16 +167,6 @@ namespace BudgetExecution
             {
                 try
                 {
-                    return provider switch
-                    {
-                        Provider.Access => DbClientPath[ "ACCDB" ],
-                        Provider.SQLite => DbClientPath[ "DB" ],
-                        Provider.SqlCe => DbClientPath[ "SDF" ],
-                        Provider.Excel => DbClientPath[ "XLSX" ],
-                        Provider.SqlServer => DbClientPath[ "MDF" ],
-                        Provider.CSV => DbClientPath[ "CSV" ],
-                        _ => DbClientPath[ "ACCDB" ]
-                    };
                 }
                 catch( Exception ex )
                 {

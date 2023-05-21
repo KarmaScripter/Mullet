@@ -8,7 +8,6 @@ namespace BudgetExecution
     using System.Collections.Generic;
     using System.Data;
     using System.Diagnostics.CodeAnalysis;
-    using System.Drawing;
     using System.IO;
     using System.Linq;
     using System.Threading;
@@ -17,6 +16,10 @@ namespace BudgetExecution
     using Syncfusion.Windows.Forms;
     using Syncfusion.Windows.Forms.Edit;
     using CheckState = MetroSet_UI.Enums.CheckState;
+    using Color = System.Drawing.Color;
+    using Font = System.Drawing.Font;
+    using FontStyle = System.Drawing.FontStyle;
+    using SystemColors = System.Drawing.SystemColors;
 
     /// <summary> </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]
@@ -60,7 +63,7 @@ namespace BudgetExecution
             InitializeComponent( );
 
             // Basic Properties
-            Size = new Size( 1310, 646 );
+            Size = new System.Drawing.Size( 1310, 646 );
             TabPage.TabForeColor = Color.FromArgb( 0, 120, 212 );
             FirstButton.Text = "Save";
             ThirdButton.Text = "Exit";

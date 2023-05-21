@@ -181,8 +181,6 @@ namespace BudgetExecution
         {
             try
             {
-                var _minion = new MinionSelector( );
-                _minion.ShowDialog( this );
             }
             catch( Exception ex )
             {
@@ -195,19 +193,6 @@ namespace BudgetExecution
         {
             try
             {
-                var _forms = Program.Windows.Values;
-                if( _forms?.Any( f => f.GetType( ) == typeof( ChartDataForm ) ) == true )
-                {
-                    var _chartDataForm = _forms?.Where( f => f.GetType( ) == typeof( ChartDataForm ) )?.First( );
-                    _chartDataForm.Visible = true;
-                }
-                else
-                {
-                    var _chartDataForm = new ChartDataForm( );
-                    _chartDataForm.Owner = this;
-                    _chartDataForm.Show( );
-                    Visible = false;
-                }
             }
             catch( Exception ex )
             {
@@ -220,19 +205,6 @@ namespace BudgetExecution
         {
             try
             {
-                var _forms = Program.Windows.Values;
-                if( _forms?.Any( f => f.GetType( ) == typeof( ExcelDataForm ) ) == true )
-                {
-                    var _excelDataForm = _forms?.Where( f => f.GetType( ) == typeof( ExcelDataForm ) )?.First( );
-                    _excelDataForm.Visible = true;
-                }
-                else
-                {
-                    var _excelDataForm = new ExcelDataForm( );
-                    _excelDataForm.Owner = this;
-                    _excelDataForm.Show( );
-                    Visible = false;
-                }
             }
             catch( Exception ex )
             {
@@ -244,19 +216,6 @@ namespace BudgetExecution
         {
             try
             {
-                var _forms = Program.Windows.Values;
-                if( _forms?.Any( f => f.GetType( ) == typeof( PdfForm ) ) == true )
-                {
-                    var _form = _forms?.Where( f => f.GetType( ) == typeof( PdfForm ) )?.First( );
-                    _form.Visible = true;
-                }
-                else
-                {
-                    var _pdfForm = new PdfForm( );
-                    _pdfForm.Owner = this;
-                    _pdfForm.Show( );
-                    Visible = false;
-                }
             }
             catch( Exception ex )
             {
@@ -269,19 +228,6 @@ namespace BudgetExecution
         {
             try
             {
-                var _forms = Program.Windows.Values;
-                if( _forms?.Any( f => f.GetType( ) == typeof( DataGridForm ) ) == true )
-                {
-                    var _dataGridForm = _forms?.Where( f => f.GetType( ) == typeof( DataGridForm ) )?.First( );
-                    _dataGridForm.Visible = true;
-                }
-                else
-                {
-                    var _dataGridForm = new DataGridForm( );
-                    _dataGridForm.Owner = this;
-                    _dataGridForm.Show( );
-                    Visible = false;
-                }
             }
             catch( Exception ex )
             {
@@ -397,11 +343,6 @@ namespace BudgetExecution
         {
             try
             {
-                var _web = new WebPage( );
-                _web.Owner = this;
-                _web.StartPosition = FormStartPosition.CenterScreen;
-                _web.Show( );
-                Visible = false;
             }
             catch( Exception ex )
             {
@@ -475,7 +416,6 @@ namespace BudgetExecution
         {
             try
             {
-                Program.Windows.Add( "MainForm", this );
             }
             catch( Exception ex )
             {

@@ -23,55 +23,55 @@ namespace BudgetExecution
 
         /// <summary> Gets or sets the start date. </summary>
         /// <value> The start date. </value>
-        DateOnly StartDate { get; set; }
+        DateTime StartDate { get; set; }
 
         /// <summary> Gets or sets the end date. </summary>
         /// <value> The end date. </value>
-        DateOnly EndDate { get; set; }
+        DateTime EndDate { get; set; }
 
         /// <summary> Gets or sets the columbus. </summary>
         /// <value> The columbus. </value>
-        DateOnly ColumbusDay { get; set; }
+        DateTime ColumbusDay { get; set; }
 
         /// <summary> Gets or sets the christmas. </summary>
         /// <value> The christmas. </value>
-        DateOnly ChristmasDay { get; set; }
+        DateTime ChristmasDay { get; set; }
 
         /// <summary> Gets or sets the thanksgiving. </summary>
         /// <value> The thanksgiving. </value>
-        DateOnly ThanksgivingDay { get; set; }
+        DateTime ThanksgivingDay { get; set; }
 
         /// <summary> Gets or sets the veterans. </summary>
         /// <value> The veterans. </value>
-        DateOnly VeteransDay { get; set; }
+        DateTime VeteransDay { get; set; }
 
         /// <summary> Gets or sets the labor. </summary>
         /// <value> The labor. </value>
-        DateOnly LaborDay { get; set; }
+        DateTime LaborDay { get; set; }
 
         /// <summary> Gets or sets the independence. </summary>
         /// <value> The independence. </value>
-        DateOnly IndependenceDay { get; set; }
+        DateTime IndependenceDay { get; set; }
 
         /// <summary> Gets or sets the juneteenth. </summary>
         /// <value> The juneteenth. </value>
-        DateOnly JuneteenthDay { get; set; }
+        DateTime JuneteenthDay { get; set; }
 
         /// <summary> Gets or sets the memorial. </summary>
         /// <value> The memorial. </value>
-        DateOnly MemorialDay { get; set; }
+        DateTime MemorialDay { get; set; }
 
         /// <summary> Gets or sets the washingtons. </summary>
         /// <value> The washingtons. </value>
-        DateOnly PresidentsDay { get; set; }
+        DateTime PresidentsDay { get; set; }
 
         /// <summary> Gets or sets the martin luther king. </summary>
         /// <value> The martin luther king. </value>
-        DateOnly MartinLutherKingDay { get; set; }
+        DateTime MartinLutherKingDay { get; set; }
 
         /// <summary> Creates new years. </summary>
         /// <value> The new years. </value>
-        DateOnly NewYearsDay { get; set; }
+        DateTime NewYearsDay { get; set; }
 
         /// <summary> Gets or sets the expiring year. </summary>
         /// <value> The expiring year. </value>
@@ -79,11 +79,11 @@ namespace BudgetExecution
 
         /// <summary> Gets or sets the expiration date. </summary>
         /// <value> The expiration date. </value>
-        DateOnly ExpirationDate { get; set; }
+        DateTime ExpirationDate { get; set; }
 
         /// <summary> Gets or sets the cancellation date. </summary>
         /// <value> The cancellation date. </value>
-        DateOnly CancellationDate { get; set; }
+        DateTime CancellationDate { get; set; }
 
         /// <summary> Gets or sets the work days. </summary>
         /// <value> The work days. </value>
@@ -127,7 +127,7 @@ namespace BudgetExecution
 
         /// <summary> Gets the federal holidays. </summary>
         /// <returns> </returns>
-        IDictionary<Holiday, DateOnly> GetFederalHolidays( );
+        IDictionary<Holiday, DateTime> GetFederalHolidays( );
 
         /// <summary> Determines whether this instance is current. </summary>
         /// <returns>

@@ -9,6 +9,6 @@ namespace BudgetExecution
     {
         /// <summary> Gets the source. </summary>
         /// <returns> </returns>
-        public Source Source { get; set; }
+        Source Source { get; set; }
     }
 }

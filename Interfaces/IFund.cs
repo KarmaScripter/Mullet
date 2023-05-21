@@ -36,11 +36,11 @@ namespace BudgetExecution
 
         /// <summary> Gets or sets the start date. </summary>
         /// <value> The start date. </value>
-        DateOnly StartDate { get; set; }
+        DateTime StartDate { get; set; }
 
         /// <summary> Gets or sets the end date. </summary>
         /// <value> The end date. </value>
-        DateOnly EndDate { get; set; }
+        DateTime EndDate { get; set; }
 
         /// <summary> Gets or sets the sub level prefix. </summary>
         /// <value> The sub level prefix. </value>
@@ -112,7 +112,7 @@ namespace BudgetExecution
 
         /// <summary> Gets or sets the bats end date. </summary>
         /// <value> The bats end date. </value>
-        DateOnly BatsEndDate { get; set; }
+        DateTime BatsEndDate { get; set; }
 
         /// <summary> Gets or sets the bats option identifier. </summary>
         /// <value> The bats option identifier. </value>

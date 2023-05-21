@@ -122,7 +122,7 @@ namespace BudgetExecution
                 HeaderLabel.ForeColor = Color.FromArgb( 0, 120, 212 );
                 HeaderLabel.Text = "Budget Guidance";
                 DataTable = new DataBuilder( Source.Resources, Provider.Access ).DataTable;
-                Document = new PdfLoadedDocument( _path );
+                Document = new PdfLoadedDocument(  );
                 DocViewer.Load( Document );
                 PopulateItems( );
             }
@@ -185,22 +185,6 @@ namespace BudgetExecution
         {
             try
             {
-                if( Owner != null
-                   && Owner.Visible == false
-                   && Owner.GetType( ) == typeof( MainForm ) )
-                {
-                    Owner.Visible = true;
-                    Close( );
-                }
-                else if( Owner != null
-                        && Owner.Visible == false
-                        && Owner.GetType( ) != typeof( MainForm ) )
-                {
-                    var _mainForm = Program.Windows[ "MainForm" ];
-                    _mainForm.Visible = true;
-                    Owner.Close( );
-                    Close( );
-                }
             }
             catch( Exception ex )
             {
@@ -213,20 +197,6 @@ namespace BudgetExecution
         {
             try
             {
-                var _forms = Program.Windows.Values;
-                if( _forms?.Any( f => f.GetType( ) == typeof( ExcelDataForm ) ) == true )
-                {
-                    var _excelDataForm = _forms?.Where( f => f.GetType( ) == typeof( ExcelDataForm ) )?.First( );
-                    _excelDataForm.Visible = true;
-                    Visible = false;
-                }
-                else
-                {
-                    var _excelDataForm = new ExcelDataForm( BindingSource );
-                    _excelDataForm.Owner = this;
-                    _excelDataForm.Show( );
-                    Visible = false;
-                }
             }
             catch( Exception ex )
             {
@@ -239,20 +209,6 @@ namespace BudgetExecution
         {
             try
             {
-                var _forms = Program.Windows.Values;
-                if( _forms?.Any( f => f.GetType( ) == typeof( DataGridForm ) ) == true )
-                {
-                    var _dataGridForm = _forms?.Where( f => f.GetType( ) == typeof( DataGridForm ) )?.First( );
-                    _dataGridForm.Visible = true;
-                    Visible = false;
-                }
-                else
-                {
-                    var _dataGridForm = new DataGridForm( );
-                    _dataGridForm.Owner = this;
-                    _dataGridForm.Show( );
-                    Visible = false;
-                }
             }
             catch( Exception ex )
             {
@@ -265,20 +221,6 @@ namespace BudgetExecution
         {
             try
             {
-                var _forms = Program.Windows.Values;
-                if( _forms?.Any( f => f.GetType( ) == typeof( ChartDataForm ) ) == true )
-                {
-                    var _chartDataForm = _forms?.Where( f => f.GetType( ) == typeof( ChartDataForm ) )?.First( );
-                    _chartDataForm.Visible = true;
-                    Visible = false;
-                }
-                else
-                {
-                    var _chartDataForm = new ChartDataForm( BindingSource );
-                    _chartDataForm.Owner = this;
-                    _chartDataForm.Show( );
-                    Visible = false;
-                }
             }
             catch( Exception ex )
             {
@@ -398,10 +340,6 @@ namespace BudgetExecution
         {
             try
             {
-                if( !Program.Windows.ContainsKey( "PdfForm" ) )
-                {
-                    Program.Windows.Add( "PdfForm", this );
-                }
             }
             catch( Exception ex )
             {
@@ -420,10 +358,6 @@ namespace BudgetExecution
         {
             try
             {
-                if( Program.Windows.ContainsKey( "PdfForm" ) )
-                {
-                    Program.Windows.Remove( "PdfForm" );
-                }
             }
             catch( Exception ex )
             {
@@ -447,11 +381,15 @@ namespace BudgetExecution
                 {
                     var _data = DataTable.AsEnumerable( );
                     var _caption = listBox.SelectedValue.ToString( );
-                    var _file = _data?.Where( p => p.Field<string>( "Caption" ).Equals( _caption ) )?.Select( p => p.Field<string>( "Location" ) )?.Single( );
+                    var _file = _data
+                        ?.Where( p => p.Field<string>( "Caption" ).Equals( _caption ) )
+                        ?.Select( p => p.Field<string>( "Location" ) )
+                        ?.Single( );
+                    
                     var _prefix = @"C:\Users\terry\source\repos\Budget\";
                     HeaderLabel.Text = _caption;
                     var _path = _prefix + _file;
-                    Document = new PdfLoadedDocument( _path );
+                    Document = new PdfLoadedDocument(  );
                     DocViewer.Load( Document );
                 }
                 catch( Exception ex )

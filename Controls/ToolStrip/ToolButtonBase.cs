@@ -48,24 +48,6 @@ namespace BudgetExecution
             {
                 try
                 {
-                    return tool switch
-                    {
-                        ToolType.FirstButton => "First Record",
-                        ToolType.PreviousButton => "Previous Record",
-                        ToolType.NextButton => "Next Record",
-                        ToolType.LastButton => "Last Record",
-                        ToolType.EditButton => "Edit Record",
-                        ToolType.AddButton => "Add Record",
-                        ToolType.EditSqlButton => "SQL Editor",
-                        ToolType.DeleteButton => "Delete Record",
-                        ToolType.SaveButton => "Save Record",
-                        ToolType.RefreshButton => "Reset Filters",
-                        ToolType.ExcelButton => "Excel Export",
-                        ToolType.CalculatorButton => "Calculator",
-                        ToolType.ChartButton => "Visualizations",
-                        ToolType.HomeButton => "Main Menu",
-                        _ => string.Empty
-                    };
                 }
                 catch( Exception ex )
                 {

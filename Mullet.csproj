@@ -5,7 +5,7 @@
     <ProjectTypeGuids>{BAA0C2D2-18E2-41B9-852F-F413020CAA33};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>BudgetExecution</RootNamespace>
     <AssemblyName>Mullet</AssemblyName>
@@ -112,20 +112,6 @@
     <Compile Include="Data\Connection\ConnectionBase.cs" />
     <Compile Include="Data\Connection\ConnectionFactory.cs" />
     <Compile Include="Data\Connection\IConnectionFactory.cs" />
-    <Compile Include="Data\Conversion\Access\AccessConnect.cs" />
-    <Compile Include="Data\Conversion\Access\AccessConversion.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\ColumnSchema.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\DatabaseSchema.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\FailedViewDefinitionHandler.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\ForeignKeySchema.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\IndexSchema.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\SqlConversionHandler.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\SqlServerConverter.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\SqlTableSelectionHandler.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\TableSchema.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\TriggerBuilder.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\TriggerSchema.cs" />
-    <Compile Include="Data\Conversion\SqlServerCe\ViewSchema.cs" />
     <Compile Include="Data\Databuilder\DataAccess.cs" />
     <Compile Include="Data\Databuilder\DataBuilder.cs" />
     <Compile Include="Data\Databuilder\DataConfig.cs" />
@@ -320,15 +306,15 @@
     <Compile Include="Controls\HeaderPanel\HeaderPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Interfaces\IGrid.cs" />
+    <Compile Include="Interfaces\IDataUnit.cs" />
+    <Compile Include="Interfaces\IBudgetUnit.cs" />
     <Compile Include="Interfaces\IAdapter.cs" />
     <Compile Include="Interfaces\IAllocation.cs" />
-    <Compile Include="Interfaces\IAmount.cs" />
     <Compile Include="Interfaces\IBudgetFiscalYear.cs" />
-    <Compile Include="Interfaces\IBudgetUnit.cs" />
     <Compile Include="Interfaces\IButton.cs" />
     <Compile Include="Interfaces\ICalendarYear.cs" />
     <Compile Include="Interfaces\IChart.cs" />
-    <Compile Include="Interfaces\IChartConfig.cs" />
     <Compile Include="Interfaces\IClock.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IConnection.cs" />
@@ -339,14 +325,12 @@
     <Compile Include="Interfaces\IDataModel.cs" />
     <Compile Include="Interfaces\IDataPath.cs" />
     <Compile Include="Interfaces\IDataSchema.cs" />
-    <Compile Include="Interfaces\IDataUnit.cs" />
     <Compile Include="Interfaces\IDefacto.cs" />
     <Compile Include="Interfaces\IExpenditure.cs" />
     <Compile Include="Interfaces\IFiscalYear.cs" />
     <Compile Include="Interfaces\IFolder.cs" />
     <Compile Include="Interfaces\IFund.cs" />
     <Compile Include="Interfaces\IFundCategory.cs" />
-    <Compile Include="Interfaces\IGrid.cs" />
     <Compile Include="Interfaces\IGroupBox.cs" />
     <Compile Include="Interfaces\IHeadquartersOffice.cs" />
     <Compile Include="Interfaces\IKey.cs" />
@@ -358,7 +342,6 @@
     <Compile Include="Interfaces\IPictureBox.cs" />
     <Compile Include="Interfaces\IProgramArea.cs" />
     <Compile Include="Interfaces\IProgramResultsCode.cs" />
-    <Compile Include="Interfaces\IProvider.cs" />
     <Compile Include="Interfaces\IQuery.cs" />
     <Compile Include="Interfaces\IReprogramming.cs" />
     <Compile Include="Interfaces\IResourcePlanningOffice.cs" />
@@ -367,7 +350,6 @@
     <Compile Include="Interfaces\ISpreadsheet.cs" />
     <Compile Include="Interfaces\ISqlStatement.cs" />
     <Compile Include="Interfaces\IStatusOfFunds.cs" />
-    <Compile Include="Interfaces\ITitleInfo.cs" />
     <Compile Include="Interfaces\IToolStrip.cs" />
     <Compile Include="Interfaces\IToolStripButton.cs" />
     <Compile Include="Interfaces\IToolStripComboBox.cs" />
@@ -424,14 +406,7 @@
     <Compile Include="Controls\PictureBox\Picture.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\PivotGrid\PivotForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Controls\PivotGrid\PivotForm.Designer.cs">
-      <DependentUpon>PivotForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\PivotGrid\PivotGrid.cs" />
-    <Compile Include="Controls\PivotGrid\PivotGridBase.cs" />
+    <Compile Include="Interfaces\IProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data.cs">
       <DependentUpon>BudgetExcel.xlsx</DependentUpon>
@@ -519,12 +494,6 @@
     <Compile Include="Controls\ToolTips\SmallTip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\WebPage\WebPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Controls\WebPage\WebPage.Designer.cs">
-      <DependentUpon>WebPage.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Controls\Calculator\CalculationForm.resx">
       <DependentUpon>CalculationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -603,9 +572,6 @@
     <EmbeddedResource Include="Controls\PDF\PdfForm.resx">
       <DependentUpon>PdfForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PivotGrid\PivotForm.resx">
-      <DependentUpon>PivotForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -622,15 +588,12 @@
     <EmbeddedResource Include="Controls\ToolStrip\ToolStripButton.resx">
       <DependentUpon>ToolStripButton.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\WebPage\WebPage.resx">
-      <DependentUpon>WebPage.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include=".editorconfig" />
     <None Include="App.config" />
     <None Include="BudgetExcel.xlsx" />
-    <None Include="Controls\Libraries\DataGridMetro.dll.config" />
-    <None Include="Controls\Libraries\MetroSet UI.deps.json" />
-    <None Include="Controls\Libraries\System.Data.SQLite.dll.config" />
+    <None Include="Libraries\DataGridMetro.dll.config" />
+    <None Include="Libraries\MetroSet UI.deps.json" />
+    <None Include="Libraries\System.Data.SQLite.dll.config" />
     <None Include="Data\Data Diagram.cd" />
     <None Include="Data\Database\Access\DataModels\INSERT\logs\xvba_debug.log.docx" />
     <None Include="Data\Database\Access\DataModels\SELECTALL\.vscode\settings.json" />
@@ -1794,100 +1757,100 @@
     <Content Include="Data\Database\SqlServer\DataModels\UPDATE\UpdateStatusOfFundsBocNames.sql" />
     <Content Include="Data\Database\SqlServer\DataModels\UPDATE\UpdateStatusOfFundsFundNames.sql" />
     <Content Include="Data\Database\SqlServer\DataModels\UPDATE\UpdateStatusOfFundsProgramProjectNames.sql" />
-    <Content Include="Controls\Libraries\C1.Win.4.8.dll" />
-    <Content Include="Controls\Libraries\C1.Win.4.8.xml" />
-    <Content Include="Controls\Libraries\C1.Win.C1FlexGrid.4.8.dll" />
-    <Content Include="Controls\Libraries\C1.Win.C1FlexGrid.4.8.xml" />
-    <Content Include="Controls\Libraries\CharmNotification.dll" />
-    <Content Include="Controls\Libraries\DataGridMetro.dll" />
-    <Content Include="Controls\Libraries\DocumentFormat.OpenXml.dll" />
-    <Content Include="Controls\Libraries\DocumentFormat.OpenXml.xml" />
-    <Content Include="Controls\Libraries\EPPlus.dll" />
-    <Content Include="Controls\Libraries\EPPlus.XML" />
-    <Content Include="Controls\Libraries\Expander.dll" />
-    <Content Include="Controls\Libraries\HeaderTableLayoutPanel.dll" />
-    <Content Include="Controls\Libraries\Interop.Excel.dll" />
-    <Content Include="Controls\Libraries\Interop.Microsoft.Office.Core.dll" />
-    <Content Include="Controls\Libraries\Interop.VBIDE.dll" />
-    <Content Include="Controls\Libraries\LinqStatistics.dll" />
-    <Content Include="Controls\Libraries\log4net.dll" />
-    <Content Include="Controls\Libraries\MetroSet UI.dll" />
-    <Content Include="Controls\Libraries\PdfSharp.Charting.dll" />
-    <Content Include="Controls\Libraries\PdfSharp.Charting.xml" />
-    <Content Include="Controls\Libraries\PdfSharp.dll" />
-    <Content Include="Controls\Libraries\PdfSharp.xml" />
-    <Content Include="Controls\Libraries\SharpPdf.Controls.dll" />
-    <Content Include="Controls\Libraries\SQLite.Designer.dll" />
-    <Content Include="Controls\Libraries\SQLite.Designer.xml" />
-    <Content Include="Controls\Libraries\System.Collections.dll" />
-    <Content Include="Controls\Libraries\System.ComponentModel.Annotations.dll" />
-    <Content Include="Controls\Libraries\System.ComponentModel.dll" />
-    <Content Include="Controls\Libraries\System.Configuration.dll" />
-    <Content Include="Controls\Libraries\System.Configuration.xml" />
-    <Content Include="Controls\Libraries\System.Console.dll" />
-    <Content Include="Controls\Libraries\System.Data.Common.dll" />
-    <Content Include="Controls\Libraries\System.Data.DataSetExtensions.dll" />
-    <Content Include="Controls\Libraries\System.Data.DataSetExtensions.xml" />
-    <Content Include="Controls\Libraries\System.Data.dll" />
-    <Content Include="Controls\Libraries\System.Data.Entity.Design.dll" />
-    <Content Include="Controls\Libraries\System.Data.Entity.Design.xml" />
-    <Content Include="Controls\Libraries\System.Data.Entity.dll" />
-    <Content Include="Controls\Libraries\System.Data.Entity.xml" />
-    <Content Include="Controls\Libraries\System.Data.Linq.dll" />
-    <Content Include="Controls\Libraries\System.Data.Linq.xml" />
-    <Content Include="Controls\Libraries\System.Data.OleDb.dll" />
-    <Content Include="Controls\Libraries\System.Data.SqlClient.dll" />
-    <Content Include="Controls\Libraries\System.Data.SQLite.dll" />
-    <Content Include="Controls\Libraries\System.Data.SQLite.EF6.dll" />
-    <Content Include="Controls\Libraries\System.Data.SQLite.EF6.xml" />
-    <Content Include="Controls\Libraries\System.Data.SQLite.Linq.dll" />
-    <Content Include="Controls\Libraries\System.Data.SQLite.Linq.xml" />
-    <Content Include="Controls\Libraries\System.Data.SQLite.xml" />
-    <Content Include="Controls\Libraries\System.Data.SqlServerCe.dll" />
-    <Content Include="Controls\Libraries\System.Data.xml" />
-    <Content Include="Controls\Libraries\System.dll" />
-    <Content Include="Controls\Libraries\System.Drawing.dll" />
-    <Content Include="Controls\Libraries\System.Drawing.xml" />
-    <Content Include="Controls\Libraries\System.IO.Compression.dll" />
-    <Content Include="Controls\Libraries\System.IO.Compression.FileSystem.dll" />
-    <Content Include="Controls\Libraries\System.IO.Compression.FileSystem.xml" />
-    <Content Include="Controls\Libraries\System.IO.Compression.xml" />
-    <Content Include="Controls\Libraries\System.IO.Compression.ZipFile.dll" />
-    <Content Include="Controls\Libraries\System.IO.dll" />
-    <Content Include="Controls\Libraries\System.Linq.dll" />
-    <Content Include="Controls\Libraries\System.Linq.Expressions.dll" />
-    <Content Include="Controls\Libraries\System.Linq.Parallel.dll" />
-    <Content Include="Controls\Libraries\System.Linq.Queryable.dll" />
-    <Content Include="Controls\Libraries\System.Linq.xml" />
-    <Content Include="Controls\Libraries\System.Net.dll" />
-    <Content Include="Controls\Libraries\System.Net.Http.dll" />
-    <Content Include="Controls\Libraries\System.Net.Http.xml" />
-    <Content Include="Controls\Libraries\System.Net.Sockets.dll" />
-    <Content Include="Controls\Libraries\System.Net.xml" />
-    <Content Include="Controls\Libraries\System.Reflection.dll" />
-    <Content Include="Controls\Libraries\System.Runtime.dll" />
-    <Content Include="Controls\Libraries\System.Runtime.Remoting.dll" />
-    <Content Include="Controls\Libraries\System.Runtime.Remoting.xml" />
-    <Content Include="Controls\Libraries\System.Runtime.Serialization.dll" />
-    <Content Include="Controls\Libraries\System.Runtime.Serialization.Formatters.dll" />
-    <Content Include="Controls\Libraries\System.Runtime.Serialization.Json.dll" />
-    <Content Include="Controls\Libraries\System.Runtime.Serialization.xml" />
-    <Content Include="Controls\Libraries\System.Runtime.Serialization.Xml.dll" />
-    <Content Include="Controls\Libraries\System.Text.Encoding.dll" />
-    <Content Include="Controls\Libraries\System.Threading.dll" />
-    <Content Include="Controls\Libraries\System.Threading.Tasks.dll" />
-    <Content Include="Controls\Libraries\System.Threading.Timer.dll" />
-    <Content Include="Controls\Libraries\System.ValueTuple.dll" />
-    <Content Include="Controls\Libraries\System.Windows.dll" />
-    <Content Include="Controls\Libraries\System.Windows.Forms.DataVisualization.MSChartExtension.dll" />
-    <Content Include="Controls\Libraries\System.Windows.Forms.DataVisualization.MSChartExtension.pdb" />
-    <Content Include="Controls\Libraries\System.Windows.Forms.DataVisualization.MSChartExtension.XML" />
-    <Content Include="Controls\Libraries\System.Windows.Forms.dll" />
-    <Content Include="Controls\Libraries\System.Windows.Forms.xml" />
-    <Content Include="Controls\Libraries\System.xml" />
-    <Content Include="Controls\Libraries\Zeroit.Framework.Metro.dll" />
-    <Content Include="Controls\Libraries\Zeroit.Framework.Metro.pdb" />
-    <Content Include="Controls\Libraries\Zeroit.Framework.Metro.xml" />
+    <Content Include="Libraries\C1.Win.4.8.dll" />
+    <Content Include="Libraries\C1.Win.4.8.xml" />
+    <Content Include="Libraries\C1.Win.C1FlexGrid.4.8.dll" />
+    <Content Include="Libraries\C1.Win.C1FlexGrid.4.8.xml" />
+    <Content Include="Libraries\CharmNotification.dll" />
+    <Content Include="Libraries\DataGridMetro.dll" />
+    <Content Include="Libraries\DocumentFormat.OpenXml.dll" />
+    <Content Include="Libraries\DocumentFormat.OpenXml.xml" />
+    <Content Include="Libraries\EPPlus.dll" />
+    <Content Include="Libraries\EPPlus.XML" />
+    <Content Include="Libraries\Expander.dll" />
+    <Content Include="Libraries\HeaderTableLayoutPanel.dll" />
+    <Content Include="Libraries\Interop.Excel.dll" />
+    <Content Include="Libraries\Interop.Microsoft.Office.Core.dll" />
+    <Content Include="Libraries\Interop.VBIDE.dll" />
+    <Content Include="Libraries\LinqStatistics.dll" />
+    <Content Include="Libraries\log4net.dll" />
+    <Content Include="Libraries\MetroSet UI.dll" />
+    <Content Include="Libraries\PdfSharp.Charting.dll" />
+    <Content Include="Libraries\PdfSharp.Charting.xml" />
+    <Content Include="Libraries\PdfSharp.dll" />
+    <Content Include="Libraries\PdfSharp.xml" />
+    <Content Include="Libraries\SharpPdf.Controls.dll" />
+    <Content Include="Libraries\SQLite.Designer.dll" />
+    <Content Include="Libraries\SQLite.Designer.xml" />
+    <Content Include="Libraries\System.Collections.dll" />
+    <Content Include="Libraries\System.ComponentModel.Annotations.dll" />
+    <Content Include="Libraries\System.ComponentModel.dll" />
+    <Content Include="Libraries\System.Configuration.dll" />
+    <Content Include="Libraries\System.Configuration.xml" />
+    <Content Include="Libraries\System.Console.dll" />
+    <Content Include="Libraries\System.Data.Common.dll" />
+    <Content Include="Libraries\System.Data.DataSetExtensions.dll" />
+    <Content Include="Libraries\System.Data.DataSetExtensions.xml" />
+    <Content Include="Libraries\System.Data.dll" />
+    <Content Include="Libraries\System.Data.Entity.Design.dll" />
+    <Content Include="Libraries\System.Data.Entity.Design.xml" />
+    <Content Include="Libraries\System.Data.Entity.dll" />
+    <Content Include="Libraries\System.Data.Entity.xml" />
+    <Content Include="Libraries\System.Data.Linq.dll" />
+    <Content Include="Libraries\System.Data.Linq.xml" />
+    <Content Include="Libraries\System.Data.OleDb.dll" />
+    <Content Include="Libraries\System.Data.SqlClient.dll" />
+    <Content Include="Libraries\System.Data.SQLite.dll" />
+    <Content Include="Libraries\System.Data.SQLite.EF6.dll" />
+    <Content Include="Libraries\System.Data.SQLite.EF6.xml" />
+    <Content Include="Libraries\System.Data.SQLite.Linq.dll" />
+    <Content Include="Libraries\System.Data.SQLite.Linq.xml" />
+    <Content Include="Libraries\System.Data.SQLite.xml" />
+    <Content Include="Libraries\System.Data.SqlServerCe.dll" />
+    <Content Include="Libraries\System.Data.xml" />
+    <Content Include="Libraries\System.dll" />
+    <Content Include="Libraries\System.Drawing.dll" />
+    <Content Include="Libraries\System.Drawing.xml" />
+    <Content Include="Libraries\System.IO.Compression.dll" />
+    <Content Include="Libraries\System.IO.Compression.FileSystem.dll" />
+    <Content Include="Libraries\System.IO.Compression.FileSystem.xml" />
+    <Content Include="Libraries\System.IO.Compression.xml" />
+    <Content Include="Libraries\System.IO.Compression.ZipFile.dll" />
+    <Content Include="Libraries\System.IO.dll" />
+    <Content Include="Libraries\System.Linq.dll" />
+    <Content Include="Libraries\System.Linq.Expressions.dll" />
+    <Content Include="Libraries\System.Linq.Parallel.dll" />
+    <Content Include="Libraries\System.Linq.Queryable.dll" />
+    <Content Include="Libraries\System.Linq.xml" />
+    <Content Include="Libraries\System.Net.dll" />
+    <Content Include="Libraries\System.Net.Http.dll" />
+    <Content Include="Libraries\System.Net.Http.xml" />
+    <Content Include="Libraries\System.Net.Sockets.dll" />
+    <Content Include="Libraries\System.Net.xml" />
+    <Content Include="Libraries\System.Reflection.dll" />
+    <Content Include="Libraries\System.Runtime.dll" />
+    <Content Include="Libraries\System.Runtime.Remoting.dll" />
+    <Content Include="Libraries\System.Runtime.Remoting.xml" />
+    <Content Include="Libraries\System.Runtime.Serialization.dll" />
+    <Content Include="Libraries\System.Runtime.Serialization.Formatters.dll" />
+    <Content Include="Libraries\System.Runtime.Serialization.Json.dll" />
+    <Content Include="Libraries\System.Runtime.Serialization.xml" />
+    <Content Include="Libraries\System.Runtime.Serialization.Xml.dll" />
+    <Content Include="Libraries\System.Text.Encoding.dll" />
+    <Content Include="Libraries\System.Threading.dll" />
+    <Content Include="Libraries\System.Threading.Tasks.dll" />
+    <Content Include="Libraries\System.Threading.Timer.dll" />
+    <Content Include="Libraries\System.ValueTuple.dll" />
+    <Content Include="Libraries\System.Windows.dll" />
+    <Content Include="Libraries\System.Windows.Forms.DataVisualization.MSChartExtension.dll" />
+    <Content Include="Libraries\System.Windows.Forms.DataVisualization.MSChartExtension.pdb" />
+    <Content Include="Libraries\System.Windows.Forms.DataVisualization.MSChartExtension.XML" />
+    <Content Include="Libraries\System.Windows.Forms.dll" />
+    <Content Include="Libraries\System.Windows.Forms.xml" />
+    <Content Include="Libraries\System.xml" />
+    <Content Include="Libraries\Zeroit.Framework.Metro.dll" />
+    <Content Include="Libraries\Zeroit.Framework.Metro.pdb" />
+    <Content Include="Libraries\Zeroit.Framework.Metro.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="C1.Win.4.8">
@@ -1952,6 +1915,9 @@
     <Reference Include="Syncfusion.Compression.Base, Version=21.2460.5.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\Budget\packages\Syncfusion.Compression.Base.21.2.5\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Compression.Portable, Version=21.2.5.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\Budget\packages\Syncfusion.Compression.Net.Core.21.2.5\lib\netstandard2.0\Syncfusion.Compression.Portable.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Core.WinForms, Version=21.2460.5.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\Budget\packages\Syncfusion.Core.WinForms.21.2.5\lib\net46\Syncfusion.Core.WinForms.dll</HintPath>
     </Reference>
@@ -1972,6 +1938,9 @@
     </Reference>
     <Reference Include="Syncfusion.Licensing, Version=21.2460.5.0, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
       <HintPath>..\Budget\packages\Syncfusion.Licensing.21.2.5\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Portable, Version=21.2.5.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\Budget\packages\Syncfusion.Pdf.Net.Core.21.2.5\lib\netstandard2.0\Syncfusion.Pdf.Portable.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfInput.WinForms, Version=21.2460.5.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\Budget\packages\Syncfusion.SfInput.WinForms.21.2.5\lib\net46\Syncfusion.SfInput.WinForms.dll</HintPath>
@@ -2035,12 +2004,6 @@
     </Reference>
     <Reference Include="System.Data.Linq">
       <HintPath>Libraries\System.Data.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.OleDb">
-      <HintPath>Libraries\System.Data.OleDb.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SqlClient">
-      <HintPath>Libraries\System.Data.SqlClient.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.SQLite">
       <HintPath>Libraries\System.Data.SQLite.dll</HintPath>
@@ -2115,6 +2078,9 @@
     <Reference Include="System.Text.Encoding">
       <HintPath>Libraries\System.Text.Encoding.dll</HintPath>
     </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\Budget\packages\System.Text.Encoding.CodePages.4.4.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
     <Reference Include="System.Threading">
       <HintPath>Libraries\System.Threading.dll</HintPath>
     </Reference>
@@ -2136,6 +2102,8 @@
     <Reference Include="System.Windows.Forms.DataVisualization.MSChartExtension">
       <HintPath>Libraries\System.Windows.Forms.DataVisualization.MSChartExtension.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Zeroit.Framework.Metro">
       <HintPath>Libraries\Zeroit.Framework.Metro.dll</HintPath>
     </Reference>
@@ -2175,5 +2143,12 @@
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
+  </Target>
+  <Import Project="..\Budget\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\Budget\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\Budget\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Budget\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets'))" />
   </Target>
 </Project>

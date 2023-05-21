@@ -53,7 +53,7 @@ namespace BudgetExecution
                                 }
 
                                 return _sqlite?.Any( ) == true
-                                    ? _sqlite
+                                    ? (IEnumerable<DbParameter>)_sqlite
                                     : default( IList<DbParameter> );
                             }
                             case Provider.SqlCe:
@@ -68,7 +68,7 @@ namespace BudgetExecution
                                 }
 
                                 return _sqlce?.Any( ) == true
-                                    ? _sqlce
+                                    ? (IEnumerable<DbParameter>)_sqlce
                                     : default( IList<DbParameter> );
                             }
                             case Provider.OleDb:
@@ -85,7 +85,7 @@ namespace BudgetExecution
                                 }
 
                                 return _oledb.Any( )
-                                    ? _oledb
+                                    ? (IEnumerable<DbParameter>)_oledb
                                     : default( IList<DbParameter> );
                             }
                             case Provider.SqlServer:
@@ -100,7 +100,7 @@ namespace BudgetExecution
                                 }
 
                                 return _sqlserver?.Any( ) == true
-                                    ? _sqlserver
+                                    ? (IEnumerable<DbParameter>)_sqlserver
                                     : default( IList<DbParameter> );
                             }
                         }

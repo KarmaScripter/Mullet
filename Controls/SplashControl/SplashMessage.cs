@@ -13,7 +13,11 @@ namespace BudgetExecution
     using System.Windows.Forms;
     using Syncfusion.Drawing;
     using Syncfusion.Windows.Forms.Tools;
+    using Color = System.Drawing.Color;
+    using Font = System.Drawing.Font;
     using Image = System.Drawing.Image;
+    using Point = System.Drawing.Point;
+    using Size = System.Drawing.Size;
 
     /// <summary> </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]

@@ -13,7 +13,7 @@ namespace BudgetExecution
     using System.Threading;
     using OfficeOpenXml;
     using OfficeOpenXml.Style;
-    using Syncfusion.Linq;
+    using Syncfusion.DataSource.Extensions;
 
     /// <summary> </summary>
     [ SuppressMessage( "ReSharper", "MemberCanBePrivate.Global" ) ]

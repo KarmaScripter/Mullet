@@ -1,13 +1,13 @@
-﻿using System;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
-using Microsoft.VisualStudio.Tools.Applications.Runtime;
-using Excel = Microsoft.Office.Interop.Excel;
-using Office = Microsoft.Office.Core;
-
-namespace BudgetExecution
+﻿namespace BudgetExecution
 {
+    using System;
+    using System.Data;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using Microsoft.VisualStudio.Tools.Applications.Runtime;
+    using Excel = Microsoft.Office.Interop.Excel;
+    using Office = Microsoft.Office.Core;
+    
     public partial class Data
     {
         private void Sheet1_Startup(object sender, System.EventArgs e)
