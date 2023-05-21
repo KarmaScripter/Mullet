@@ -1,0 +1,30 @@
+CREATE TABLE [SpendingDocuments]
+(
+	[SpendingDocumentsId] INT NOT NULL IDENTITY(1,1),
+	[BFY] NVARCHAR(80) NULL,
+	[EFY] NVARCHAR(80) NULL,
+	[TreasurySymbol] NVARCHAR(80) NULL,
+	[RpioCode] NVARCHAR(80) NULL,
+	[RpioName] NVARCHAR(80) NULL,
+	[FundCode] NVARCHAR(80) NULL,
+	[FundName] NVARCHAR(80) NULL,
+	[AhCode] NVARCHAR(80) NULL,
+	[AhName] NVARCHAR(80) NULL,
+	[AccountCode] NVARCHAR(80) NULL,
+	[ActivityCode] NVARCHAR(80) NULL,
+	[ProgramProjectName] NVARCHAR(80) NULL,
+	[ProgramAreaCode] NVARCHAR(80) NULL,
+	[ProgramAreaName] NVARCHAR(80) NULL,
+	[PurchaseRequestNumber] NVARCHAR(80) NULL,
+	[DocumentType] NVARCHAR(80) NULL,
+	[DocumentControlNumber] NVARCHAR(80) NULL,
+	[BocCode] NVARCHAR(80) NULL,
+	[BocName] NVARCHAR(80) NULL,
+	[OriginalActionDate] DATETIME NULL,
+	[LastActionDate] DATETIME NULL,
+	[Commitments] FLOAT NULL,
+	[Obligations] FLOAT NULL,
+	[Deobligations] FLOAT NULL,
+	[UnliqudatedObligations] FLOAT NULL
+);
+

@@ -1,0 +1,25 @@
+﻿CREATE TABLE [FiscalYears]
+(
+   [FiscalYearsId] INT NOT NULL IDENTITY (117,1),
+   [BFY] NVARCHAR(80) NOT NULL,
+   [EFY] NVARCHAR(80) NULL,
+   [StartDate] NVARCHAR(80) NULL,
+   [ColumbusDay] DATETIME,
+   [VeteransDay] DATETIME,
+   [ThanksgivingDay] DATETIME,
+   [ChristmasDay] DATETIME,
+   [NewYearsDay] DATETIME,
+   [MartinLutherKingsDay] DATETIME,
+   [WashingtonsDay] DATETIME,
+   [MemorialDay] DATETIME,
+   [JuneteenthDay] DATETIME,
+   [IndependenceDay] DATETIME,
+   [LaborDay] DATETIME,
+   [ExpiringYear] NVARCHAR(80) NULL,
+   [ExpirationDate] NVARCHAR(80) NULL,
+   [WorkDays] FLOAT,
+   [WeekDays] FLOAT,
+   [WeekEnds] FLOAT,
+   [EndDate] NVARCHAR(80) NULL,
+   [Availability] NVARCHAR(80)
+);
